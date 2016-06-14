@@ -3,8 +3,8 @@
  Bob Steagall
  KEWB Enterprises
 ================================================================================
-This is the README file for the KEWB GCC 5.X.0 build scripts.  In the following
-text, the version numbers will be referred to as 5.X.0 or 5X0, depending on the
+This is the README file for the KEWB GCC 6.X.0 build scripts.  In the following
+text, the version numbers will be referred to as 6.X.0 or 6X0, depending on the
 usage and context.
 
 --------------------------------------------
@@ -63,7 +63,7 @@ build process.  Each operation is a distinct step in that process.
 
 
 --------------------------------------------
-4. HOW TO BUILD GCC 5.X.0 WITH THESE SCRIPTS
+4. HOW TO BUILD GCC 6.X.0 WITH THESE SCRIPTS
 
 The process is pretty simple:
 
@@ -76,7 +76,7 @@ The process is pretty simple:
 
  b. Customize the variables exported by gcc-build-vars.sh.  In particular,
     you will need to customize the first variable at the top of that file,
-    GCC_VERSION, to select the version of GCC 5.X.0 to download and build.
+    GCC_VERSION, to select the version of GCC 6.X.0 to download and build.
 
     $ vi ./gcc-build-vars.sh  (only do this if really needed!)
 
@@ -110,43 +110,43 @@ The process is pretty simple:
 
 IMPORTANT WARNING:
 
-If you want to rebuild GCC 5.X.0 after having built and installed it according
+If you want to rebuild GCC 6.X.0 after having built and installed it according
 to these directions, AND you plan to install the rebuilt version in the same
 location as its predecessor, then it is imperative that you first perform one
 of the following two actions:
 
   a. Rename the installation directory, for example:
 
-    $ mv /usr/local/gcc/5.X.0 /usr/local/gcc/5.X-old
+    $ mv /usr/local/gcc/6.X.0 /usr/local/gcc/6.X-old
 
   --OR--
 
   b. Rename the custom 'as' and 'ld' exectuables, for example:
 
-    $ cd /usr/local/gcc/5.X/libexec/gcc/x86_64-kewb-linux-gnu/5.X
+    $ cd /usr/local/gcc/6.X/libexec/gcc/x86_64-kewb-linux-gnu/6.X
     $ mv as as-old
     $ mv ld ld-old
 
 Otherwise, the configure portion of the build process will find the custom
-'as' and 'ld' executables in the GCC 5.X.0 directory structure, and build
+'as' and 'ld' executables in the GCC 6.X.0 directory structure, and build
 the 'crtbeginS.o' startup file in a way that may be incompatible with your
 system's default linker.
 
 It is important that the compilation of GCC takes place using the system's
 default binutils, and not the custom 'as' and 'ld' that are installed in the
-GCC 5.X.0 directory structure.
+GCC 6.X.0 directory structure.
 
 
 ---------------------------------------------
-5. HOW TO USE THE KEWB CUSTOM GCC 5.X.0 BUILD
+5. HOW TO USE THE KEWB CUSTOM GCC 6.X.0 BUILD
 
 Before using the compiler, some paths need to be set.  The simplest way to do
-this is source the "setenv-for-gcc5X0.sh" script that is installed.
+this is source the "setenv-for-gcc6X0.sh" script that is installed.
 
- a. Source the script /usr/local/bin/setenv-for-gcc-5X0.sh, which was installed
+ a. Source the script /usr/local/bin/setenv-for-gcc-6X0.sh, which was installed
     in step 4.e or 4.f above.  For example,
 
-        $ source /usr/local/bin/setenv-for-gcc5X0.sh
+        $ source /usr/local/bin/setenv-for-gcc6X0.sh
 
 -- OR --
 
@@ -155,11 +155,11 @@ this is source the "setenv-for-gcc5X0.sh" script that is installed.
     system default compiler is installed (which is usually in /usr/bin or
     /usr/local/bin).  For example,
 
-        $ export PATH=/usr/local/gcc/5.X.0/bin:$PATH
+        $ export PATH=/usr/local/gcc/6.X.0/bin:$PATH
 
  b. You will also need to modify your LD_LIBRARY_PATH environment variable so
     that the directories $GCC_INSTALL_DIR/lib and $GCC_INSTALL_DIR/lib64 appear
     first in the path.  For example,
 
-        $ export LD_LIBRARY_PATH=/usr/local/gcc/5.X.0/lib:\
-          /usr/local/gcc/5.X.0/lib64:$LD_LIBRARY_PATH
+        $ export LD_LIBRARY_PATH=/usr/local/gcc/6.X.0/lib:\
+          /usr/local/gcc/6.X.0/lib64:$LD_LIBRARY_PATH
