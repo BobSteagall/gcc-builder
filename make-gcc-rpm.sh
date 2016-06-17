@@ -20,7 +20,6 @@ WORK_DIR=$TOP_DIR/packages
 RPM_QUIET="--quiet"
 CP="cp"
 MKDIR="mkdir -p"
-BO_ROOT_DIR=$RPMBUILD_SRCDIR
 
 function usage () 
 {
@@ -56,7 +55,7 @@ if [ -z "$RELEASE_VERSION" ]; then
     usage
 fi
 
-BO_ROOT_DIR=`readlink -f $BO_ROOT_DIR`
+BO_ROOT_DIR=`readlink -f $GCC_STAGEDIR`
 
 if [ -x $BO_ROOT_DIR/$GCC_INSTALL_RELDIR/bin/gcc ]; then
     echo "Found GCC $GCC_VERSION in $BO_ROOT_DIR/$GCC_INSTALL_RELDIR"
@@ -113,7 +112,7 @@ function rpmcmd ()
 {
     rpmbuild -bb $RPM_QUIET                             \
     --define "build_root_dir $BO_ROOT_DIR"              \
-    --define "gcc_install_dir $GCC_INSTALL_DIR"         \
+    --define "gcc_install_dir $GCC_INSTALL_PREFIX"      \
     --define "gcc_install_reldir $GCC_INSTALL_RELDIR"   \
     --define "gcc_tag $GCC_TAG"                         \
     --define "gcc_version $GCC_VERSION"                 \
@@ -130,7 +129,7 @@ function rpmcmd ()
 echo "Building GCC RPM using:"
 echo "   GCC_VERSION  = $GCC_VERSION"
 echo "   GCC_TAG      = $GCC_TAG"
-echo "   INSTALL_DIR  = $GCC_INSTALL_DIR"
+echo "   INSTALL_PREFIX  = $GCC_INSTALL_PREFIX"
 echo "   RPM_RELEASE  = $RPM_RELEASE"
 echo "   PRODUCT_ARCH = $PLATFORM_ARCH"
 echo "   PRODUCT_OS   = $PLATFORM_OS"

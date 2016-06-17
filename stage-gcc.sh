@@ -16,53 +16,53 @@ source ./gcc-build-vars.sh
 
 ##- Make the dummy installation directory.
 ##
-mkdir -p $RPMBUILD_SRCDIR/usr/local/bin
+mkdir -p $GCC_STAGEDIR/usr/local/bin
 
 ##- Install GCC itself.
 ##
 cd $GCC_BLD_DIR
-$GCC_MAKE install DESTDIR=$RPMBUILD_SRCDIR
+$GCC_MAKE install DESTDIR=$GCC_STAGEDIR
 
 ##- If requested, install custom binutils.
 ##
 if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_NEWER_BINUTILS" == "YES" ]
 then
     cd $BU_BLD_DIR
-    $GCC_MAKE install-gas DESTDIR=$RPMBUILD_SRCDIR
-    $GCC_MAKE install-ld  DESTDIR=$RPMBUILD_SRCDIR
+    $GCC_MAKE install-gas DESTDIR=$GCC_STAGEDIR
+    $GCC_MAKE install-ld  DESTDIR=$GCC_STAGEDIR
 
     cd $GCC_SRC_DIR
     GCC_TRIPLE=`config.guess`
     GCC_EXEC_DIR=libexec/gcc/$GCC_TRIPLE/$GCC_VERSION
-    cp -v $RPMBUILD_SRCDIR/usr/local/bin/as  $RPMBUILD_SRCDIR/$GCC_INSTALL_DIR/$GCC_EXEC_DIR
-    cp -v $RPMBUILD_SRCDIR/usr/local/bin/ld* $RPMBUILD_SRCDIR/$GCC_INSTALL_DIR/$GCC_EXEC_DIR
+    cp -v $GCC_STAGEDIR/usr/local/bin/as  $GCC_STAGEDIR/$GCC_INSTALL_PREFIX/$GCC_EXEC_DIR
+    cp -v $GCC_STAGEDIR/usr/local/bin/ld* $GCC_STAGEDIR/$GCC_INSTALL_PREFIX/$GCC_EXEC_DIR
 fi
 
 ##- Install helper scripts and create helper links.
 ##
 cd $TOP_DIR
 
-sed "s|ABCXYZ|$GCC_INSTALL_DIR|"    \
+sed "s|ABCXYZ|$GCC_INSTALL_PREFIX|" \
     ./setenv-for-gcc.sh  >          \
     ./setenv-for-gcc$GCC_TAG.sh
 chmod 755 ./setenv-for-gcc$GCC_TAG.sh
-mv -vf ./setenv-for-gcc$GCC_TAG.sh        $RPMBUILD_SRCDIR/usr/local/bin
+mv -vf ./setenv-for-gcc$GCC_TAG.sh        $GCC_STAGEDIR/usr/local/bin
 
 cp -v ./restore-default-paths.sh ./restore-default-paths-gcc$GCC_TAG.sh
 chmod 755 ./restore-default-paths-gcc$GCC_TAG.sh
-mv -vf ./restore-default-paths-gcc$GCC_TAG.sh $RPMBUILD_SRCDIR/usr/local/bin
+mv -vf ./restore-default-paths-gcc$GCC_TAG.sh $GCC_STAGEDIR/usr/local/bin
 
-cd $RPMBUILD_SRCDIR/usr/local/bin
+cd $GCC_STAGEDIR/usr/local/bin
 
-ln -vf -s $GCC_INSTALL_DIR/bin/gcc gcc$GCC_TAG
-ln -vf -s $GCC_INSTALL_DIR/bin/g++ g++$GCC_TAG
+ln -vf -s $GCC_INSTALL_PREFIX/bin/gcc gcc$GCC_TAG
+ln -vf -s $GCC_INSTALL_PREFIX/bin/g++ g++$GCC_TAG
 
 ##- Touch all the files to have the desired timestamp.
 ##
-cd $RPMBUILD_SRCDIR
-find $RPMBUILD_SRCDIR/$GCC_INSTALL_RELDIR -exec touch -h -t $GCC_TIME_STAMP {} \+
+cd $GCC_STAGEDIR
+find $GCC_STAGEDIR/$GCC_INSTALL_RELDIR -exec touch -h -t $GCC_TIME_STAMP {} \+
 
-cd $RPMBUILD_SRCDIR/usr/local/bin
+cd $GCC_STAGEDIR/usr/local/bin
 touch -h -t $GCC_TIME_STAMP gcc$GCC_TAG
 touch -h -t $GCC_TIME_STAMP g++$GCC_TAG
 touch -h -t $GCC_TIME_STAMP setenv-for-gcc$GCC_TAG.sh

@@ -28,7 +28,7 @@ then
     then
         $GCC_SRC_DIR/configure -v               \
             --with-pkgversion="$GCC_PKG_NAME"   \
-            --prefix=$GCC_INSTALL_DIR           \
+            --prefix=$GCC_INSTALL_PREFIX        \
             --program-suffix=$GCC_EXE_SUFFIX    \
             --enable-tls                        \
             --enable-shared                     \
@@ -48,7 +48,7 @@ then
     then
         $GCC_SRC_DIR/configure -v               \
             --with-pkgversion="$GCC_PKG_NAME"   \
-            --prefix=$GCC_INSTALL_DIR           \
+            --prefix=$GCC_INSTALL_PREFIX        \
             --program-suffix=$GCC_EXE_SUFFIX    \
             --enable-tls                        \
             --enable-shared                     \
