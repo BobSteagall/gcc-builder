@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC 5 that you want
 ##  to download and build.
 ##
-export GCC_VERSION=6.X.0
+export GCC_VERSION=6.1.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
@@ -26,7 +26,7 @@ export GCC_CUSTOM_BUILD_STR=kewb
 ##  be installed.
 ##
 export GCC_INSTALL_ROOT=/usr/local
-export GCC_INSTALL_DIR=$GCC_INSTALL_ROOT/gcc/$GCC_VERSION
+export GCC_INSTALL_PREFIX=$GCC_INSTALL_ROOT/gcc/$GCC_VERSION
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
@@ -87,9 +87,9 @@ export ALL_TARBALLS="$GCC_TARBALL $GMP_TARBALL $MPC_TARBALL $MPFR_TARBALL $BU_TA
 export GCC_TAG="${GCC_VERSION//.}"
 export GCC_SRC_DIR=$TOP_DIR/gcc-$GCC_VERSION
 export GCC_BLD_DIR=$TOP_DIR/gcc-$GCC_VERSION-build
-export GCC_INSTALL_RELDIR=`echo $GCC_INSTALL_DIR | sed 's:^/::'`
+export GCC_INSTALL_RELDIR=`echo $GCC_INSTALL_PREFIX | sed 's:^/::'`
 
-export RPMBUILD_SRCDIR=$TOP_DIR/dist
+export GCC_STAGEDIR=$TOP_DIR/dist
 
 if [ "$GCC_PLATFORM" == "FreeBSD" ]
 then

@@ -33,6 +33,7 @@ rm -rf $RPM_BUILD_ROOT
 
 BR_DIR=%{build_root_dir}
 IREL_DIR=%{gcc_install_reldir}
+IPREFIX=%{gcc_install_prefix}
 VERSION=%{gcc_version}
 TAG=%{gcc_tag}
 
@@ -45,8 +46,8 @@ cp -rpv $BR_DIR/$IREL_DIR/*                                    $RPM_BUILD_ROOT/$
 
 cd $RPM_BUILD_ROOT/usr/local/bin
 
-ln -s -v /usr/local/gcc/$VERSION/bin/gcc gcc$TAG
-ln -s -v /usr/local/gcc/$VERSION/bin/g++ g++$TAG
+ln -s -v $IPREFIX/bin/gcc gcc$TAG
+ln -s -v $IPREFIX/bin/g++ g++$TAG
 
 touch -h -r setenv-for-gcc$TAG.sh gcc$TAG
 touch -h -r setenv-for-gcc$TAG.sh g++$TAG
@@ -93,13 +94,13 @@ exit 0
 %attr(-,root,wheel) /usr/local/bin/restore-default-paths-gcc%{gcc_tag}.sh
 %attr(-,root,wheel) /usr/local/bin/gcc%{gcc_tag}
 %attr(-,root,wheel) /usr/local/bin/g++%{gcc_tag}
-%attr(-,root,wheel) /usr/local/gcc/%{gcc_version}
+%attr(-,root,wheel) %{gcc_install_dir}
 %else
 %attr(-,root,root) /usr/local/bin/setenv-for-gcc%{gcc_tag}.sh
 %attr(-,root,root) /usr/local/bin/restore-default-paths-gcc%{gcc_tag}.sh
 %attr(-,root,root) /usr/local/bin/gcc%{gcc_tag}
 %attr(-,root,root) /usr/local/bin/g++%{gcc_tag}
-%attr(-,root,root) /usr/local/gcc/%{gcc_version}
+%attr(-,root,root) %{gcc_install_dir}
 %endif
 
 
