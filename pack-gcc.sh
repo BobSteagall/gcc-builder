@@ -34,7 +34,7 @@ DEST_DIR=`readlink -f ./packages`
 TARBALL=$DEST_DIR/kewb-gcc${GCC_TAG}-${PLATFORM_FULL}.tgz
 rm -rf $TARBALL
 
-cd $RPMBUILD_SRCDIR
+cd $GCC_STAGEDIR
 
 tar -zcvf $TARBALL \
         usr/local/bin/gcc$GCC_TAG                            \
