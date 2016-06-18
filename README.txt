@@ -123,7 +123,7 @@ of the following two actions:
 
   b. Rename the custom 'as' and 'ld' exectuables, for example:
 
-    $ cd /usr/local/gcc/6.X/libexec/gcc/x86_64-kewb-linux-gnu/6.X
+    $ cd /usr/local/gcc/6.X.0/libexec/gcc/x86_64-kewb-linux-gnu/6.X.0
     $ mv as as-old
     $ mv ld ld-old
 
