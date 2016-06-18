@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC 5 that you want
 ##  to download and build.
 ##
-export GCC_VERSION=6.1.0
+export GCC_VERSION=6.X.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
