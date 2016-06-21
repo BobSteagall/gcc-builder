@@ -24,9 +24,9 @@ usage and context.
     and the test scripts, in that order.
 
   * stage-gcc.sh - This script installs GCC into a staging location specified
-    by the build variables script (gcc-build-vars.sh).  This is normally in the
-    ./dist subdirectory, which serves as the staging area for creating a TGZ
-    (compressed tarball) file and/or an RPM file.
+    by the build variables script (gcc-build-vars.sh).  This is normally in
+    the ./dist subdirectory, which serves as the staging area for creating a
+    TGZ (compressed tarball) file and/or an RPM file.
 
   * pack-gcc.sh - This script creates a compressed tarball of compiler files
     installed into the staging directory by the stage-gcc.sh script.  The
@@ -55,8 +55,9 @@ build process.  Each operation is a distinct step in that process.
     gcc-build-vars.sh.
 
   * make-gcc.sh - This script makes GCC from within the build subdirectory.
-    It runs with -j8 (i.e., up to 8 parallel processes), so if you don't
-    have 8 cores on your build system, you should change this value.
+    It runs with -j8 (i.e., up to 8 parallel processes); you can change this
+    value by modifying the GCC_BUILD_THREADS_ARG variable defined in the
+    gcc-build-vars.sh script described above.
 
   * clean-gcc.sh - This script deletes the source, build, install staging,
     and package output directories.
@@ -78,7 +79,7 @@ The process is pretty simple:
     you will need to customize the first variable at the top of that file,
     GCC_VERSION, to select the version of GCC 6.X.0 to download and build.
 
-    $ vi ./gcc-build-vars.sh  (only do this if really needed!)
+    $ vi ./gcc-build-vars.sh
 
  c. Run the build-gcc.sh script.
 
@@ -158,8 +159,8 @@ this is source the "setenv-for-gcc6X0.sh" script that is installed.
         $ export PATH=/usr/local/gcc/6.X.0/bin:$PATH
 
  b. You will also need to modify your LD_LIBRARY_PATH environment variable so
-    that the directories $GCC_INSTALL_DIR/lib and $GCC_INSTALL_DIR/lib64 appear
-    first in the path.  For example,
+    that the $GCC_INSTALL_PREFIX/lib and $GCC_INSTALL_PREFIX/lib64 directories
+    appear first in the path.  For example,
 
         $ export LD_LIBRARY_PATH=/usr/local/gcc/6.X.0/lib:\
           /usr/local/gcc/6.X.0/lib64:$LD_LIBRARY_PATH
