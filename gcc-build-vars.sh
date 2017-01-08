@@ -7,7 +7,7 @@
 ##  It assumes that TOP_DIR has been defined appropriately by the caller,
 ##  and that it is being sourced by the calling script.
 ##
-##- Customize this variable to specify the version of GCC 5 that you want
+##- Customize this variable to specify the version of GCC 6 that you want
 ##  to download and build.
 ##
 export GCC_VERSION=6.X.0
@@ -30,7 +30,7 @@ export GCC_INSTALL_PREFIX=$GCC_INSTALL_ROOT/gcc/$GCC_VERSION
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=201606011000
+export GCC_TIME_STAMP=201701041000
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of threads used to build and test GCC,
@@ -93,12 +93,13 @@ export GCC_STAGEDIR=$TOP_DIR/dist
 
 if [ "$GCC_PLATFORM" == "FreeBSD" ]
 then
-    GCC_MAKE=gmake
+    export GCC_MAKE=gmake
 
 elif [ "$GCC_PLATFORM" == "Linux" ]
 then
-    GCC_MAKE=make
+    export GCC_MAKE=make
 else
     echo "Unknown build platform!"
     exit 1
 fi
+
