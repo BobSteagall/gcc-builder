@@ -1,10 +1,10 @@
 ================================================================================
- 2016-06-14
+ 2017-05-04
  Bob Steagall
  KEWB Enterprises
 ================================================================================
-This is the README file for the KEWB GCC 6.X.0 build scripts.  In the following
-text, the version numbers will be referred to as 6.X.0 or 6X0, depending on the
+This is the README file for the KEWB GCC 7.X.0 build scripts.  In the following
+text, the version numbers will be referred to as 7.X.0 or 7X0, depending on the
 usage and context.
 
 --------------------------------------------
@@ -64,20 +64,20 @@ build process.  Each operation is a distinct step in that process.
 
 
 --------------------------------------------
-4. HOW TO BUILD GCC 6.X.0 WITH THESE SCRIPTS
+4. HOW TO BUILD GCC 7.X.0 WITH THESE SCRIPTS
 
 The process is pretty simple:
 
- a. Clone the git repo and checkout the gcc6 branch.
+ a. Clone the git repo and checkout the gcc7 branch.
 
     $ cd <build_dir>
     $ git clone git@gitlab.com/BobSteagall/gcc-builder.git
     $ cd <build_dir>/gcc-builder
-    $ git checkout gcc6
+    $ git checkout gcc7
 
  b. Customize the variables exported by gcc-build-vars.sh.  In particular,
     you will need to customize the first variable at the top of that file,
-    GCC_VERSION, to select the version of GCC 6.X.0 to download and build.
+    GCC_VERSION, to select the version of GCC 7.X.0 to download and build.
 
     $ vi ./gcc-build-vars.sh
 
@@ -111,43 +111,43 @@ The process is pretty simple:
 
 IMPORTANT WARNING:
 
-If you want to rebuild GCC 6.X.0 after having built and installed it according
+If you want to rebuild GCC 7.X.0 after having built and installed it according
 to these directions, AND you plan to install the rebuilt version in the same
 location as its predecessor, then it is imperative that you first perform one
 of the following two actions:
 
   a. Rename the installation directory, for example:
 
-    $ mv /usr/local/gcc/6.X.0 /usr/local/gcc/6.X-old
+    $ mv /usr/local/gcc/7.X.0 /usr/local/gcc/7.X-old
 
   --OR--
 
   b. Rename the custom 'as' and 'ld' exectuables, for example:
 
-    $ cd /usr/local/gcc/6.X.0/libexec/gcc/x86_64-kewb-linux-gnu/6.X.0
+    $ cd /usr/local/gcc/7.X.0/libexec/gcc/x86_64-kewb-linux-gnu/6.X.0
     $ mv as as-old
     $ mv ld ld-old
 
 Otherwise, the configure portion of the build process will find the custom
-'as' and 'ld' executables in the GCC 6.X.0 directory structure, and build
+'as' and 'ld' executables in the GCC 7.X.0 directory structure, and build
 the 'crtbeginS.o' startup file in a way that may be incompatible with your
 system's default linker.
 
 It is important that the compilation of GCC takes place using the system's
 default binutils, and not the custom 'as' and 'ld' that are installed in the
-GCC 6.X.0 directory structure.
+GCC 7.X.0 directory structure.
 
 
 ---------------------------------------------
-5. HOW TO USE THE KEWB CUSTOM GCC 6.X.0 BUILD
+5. HOW TO USE THE KEWB CUSTOM GCC 7.X.0 BUILD
 
 Before using the compiler, some paths need to be set.  The simplest way to do
-this is source the "setenv-for-gcc6X0.sh" script that is installed.
+this is source the "setenv-for-gcc7X0.sh" script that is installed.
 
- a. Source the script /usr/local/bin/setenv-for-gcc-6X0.sh, which was installed
+ a. Source the script /usr/local/bin/setenv-for-gcc-7X0.sh, which was installed
     in step 4.e or 4.f above.  For example,
 
-        $ source /usr/local/bin/setenv-for-gcc6X0.sh
+        $ source /usr/local/bin/setenv-for-gcc7X0.sh
 
 -- OR --
 
@@ -156,11 +156,11 @@ this is source the "setenv-for-gcc6X0.sh" script that is installed.
     system default compiler is installed (which is usually in /usr/bin or
     /usr/local/bin).  For example,
 
-        $ export PATH=/usr/local/gcc/6.X.0/bin:$PATH
+        $ export PATH=/usr/local/gcc/7.X.0/bin:$PATH
 
  b. You will also need to modify your LD_LIBRARY_PATH environment variable so
     that the $GCC_INSTALL_PREFIX/lib and $GCC_INSTALL_PREFIX/lib64 directories
     appear first in the path.  For example,
 
-        $ export LD_LIBRARY_PATH=/usr/local/gcc/6.X.0/lib:\
-          /usr/local/gcc/6.X.0/lib64:$LD_LIBRARY_PATH
+        $ export LD_LIBRARY_PATH=/usr/local/gcc/7.X.0/lib:\
+          /usr/local/gcc/7.X.0/lib64:$LD_LIBRARY_PATH
