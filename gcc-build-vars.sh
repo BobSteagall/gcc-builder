@@ -10,12 +10,12 @@
 ##- Customize this variable to specify the version of GCC 6 that you want
 ##  to download and build.
 ##
-export GCC_VERSION=6.X.0
+export GCC_VERSION=7.X.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
 ##
-export GCC_PKG_NAME='KEWB Enterprises Build'
+export GCC_PKG_NAME='KEWB Computing Build'
 
 ##- Customize this variable to define the middle substring of the GCC build
 ##  triple.
@@ -30,7 +30,7 @@ export GCC_INSTALL_PREFIX=$GCC_INSTALL_ROOT/gcc/$GCC_VERSION
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=201701041000
+export GCC_TIME_STAMP=201705041000
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of threads used to build and test GCC,
