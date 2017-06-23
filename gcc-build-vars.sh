@@ -15,7 +15,7 @@ export GCC_VERSION=5.X.0
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
 ##
-export GCC_PKG_NAME='KEWB Enterprises Build'
+export GCC_PKG_NAME='KEWB Computing Build'
 
 ##- Customize this variable to define the middle substring of the GCC build
 ##  triple.
