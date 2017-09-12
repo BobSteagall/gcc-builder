@@ -58,6 +58,7 @@ ln -vf -s $GCC_INSTALL_PREFIX/bin/gcc gcc$GCC_TAG
 ln -vf -s $GCC_INSTALL_PREFIX/bin/g++ g++$GCC_TAG
 
 cd $GCC_STAGEDIR/$GCC_INSTALL_RELDIR/bin
+
 ln -vf -s gcc cc
 ln -vf -s g++ c++
 
