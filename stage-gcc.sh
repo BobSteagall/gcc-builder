@@ -61,6 +61,9 @@ cd $GCC_STAGEDIR/$GCC_INSTALL_RELDIR/bin
 ln -vf -s gcc cc
 ln -vf -s g++ c++
 
+ln -vf -s gcc gcc-$GCC_MAJOR_VERSION
+ln -vf -s g++ g++-$GCC_MAJOR_VERSION
+
 ##- Touch all the files to have the desired timestamp.
 ##
 cd $GCC_STAGEDIR
