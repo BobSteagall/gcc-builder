@@ -100,6 +100,10 @@ The process is pretty simple:
     $ cd /
     $ sudo tar -zxvf <build_dir>/gcc-builder/packages/kewb-gcc-*.tgz
 
+    or, alternatively:
+
+    $ sudo tar -zxvf ./gcc-builder/packages/kewb-gcc-*.tgz -C /
+
  f. If you want to create an RPM for subsequent installations:
 
     $ ./make-gcc-rpm.sh -v
