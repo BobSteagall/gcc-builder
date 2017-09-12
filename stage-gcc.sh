@@ -32,7 +32,7 @@ then
     $GCC_MAKE install-ld  DESTDIR=$GCC_STAGEDIR
 
     cd $GCC_SRC_DIR
-    GCC_TRIPLE=`config.guess`
+    GCC_TRIPLE=`./config.guess`
     GCC_EXEC_DIR=libexec/gcc/$GCC_TRIPLE/$GCC_VERSION
     cp -v $GCC_STAGEDIR/usr/local/bin/as  $GCC_STAGEDIR/$GCC_INSTALL_PREFIX/$GCC_EXEC_DIR
     cp -v $GCC_STAGEDIR/usr/local/bin/ld* $GCC_STAGEDIR/$GCC_INSTALL_PREFIX/$GCC_EXEC_DIR
@@ -56,6 +56,10 @@ cd $GCC_STAGEDIR/usr/local/bin
 
 ln -vf -s $GCC_INSTALL_PREFIX/bin/gcc gcc$GCC_TAG
 ln -vf -s $GCC_INSTALL_PREFIX/bin/g++ g++$GCC_TAG
+
+cd $GCC_STAGEDIR/$GCC_INSTALL_RELDIR/bin
+ln -vf -s gcc cc
+ln -vf -s g++ c++
 
 ##- Touch all the files to have the desired timestamp.
 ##

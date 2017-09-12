@@ -30,7 +30,7 @@ export GCC_INSTALL_PREFIX=$GCC_INSTALL_ROOT/gcc/$GCC_VERSION
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=201705041000
+export GCC_TIME_STAMP=201708141000
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of threads used to build and test GCC,
