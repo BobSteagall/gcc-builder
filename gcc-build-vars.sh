@@ -88,6 +88,7 @@ export GCC_TAG="${GCC_VERSION//.}"
 export GCC_SRC_DIR=$TOP_DIR/gcc-$GCC_VERSION
 export GCC_BLD_DIR=$TOP_DIR/gcc-$GCC_VERSION-build
 export GCC_INSTALL_RELDIR=`echo $GCC_INSTALL_PREFIX | sed 's:^/::'`
+export GCC_MAJOR_VERSION=`echo $GCC_VERSION | cut -d '.' -f 1`
 
 export GCC_STAGEDIR=$TOP_DIR/dist
 
