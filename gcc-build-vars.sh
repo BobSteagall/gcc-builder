@@ -104,3 +104,23 @@ else
     exit 1
 fi
 
+if [ -z "$NO_PARSE_OPTS" ]
+then
+    if [ $# == "0" ]
+    then
+        export DO_TEST=YES
+    else
+        while getopts ":clhn" opt
+        do
+            case $opt in
+                h ) echo "usage: $0 [-t] [-T]"
+                    exit 1 ;;
+                t ) export DO_TEST=YES ;;
+                T ) export DO_TEST= ;;
+                * ) echo "usage: $0 [-t] [-T]"
+                    exit 1 ;;
+            esac
+        done
+    fi
+fi
+
