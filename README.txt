@@ -1,11 +1,15 @@
 ================================================================================
- 2017-05-04
+ 2017-09-20
  Bob Steagall
  KEWB Enterprises
 ================================================================================
 This is the README file for the KEWB GCC 7.X.0 build scripts.  In the following
 text, the version numbers will be referred to as 7.X.0 or 7X0, depending on the
 usage and context.
+
+In order to run these scripts, the following prerequisites must be installed:
+ a. lsb_release on Linux
+ b. the typical GNU build tools
 
 --------------------------------------------
 1. SCRIPTS THAT PROVIDE CUSTOM BUILD OPTIONS
