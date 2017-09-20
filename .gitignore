@@ -5,4 +5,5 @@ gcc-7*
 dist*
 packages
 tarballs
+tmp*
 build*.log*
