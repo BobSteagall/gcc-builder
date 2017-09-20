@@ -1,7 +1,7 @@
 ================================================================================
  2017-09-20
  Bob Steagall
- KEWB Enterprises
+ KEWB Computing
 ================================================================================
 This is the README file for the KEWB GCC 7.X.0 build scripts.  In the following
 text, the version numbers will be referred to as 7.X.0 or 7X0, depending on the
