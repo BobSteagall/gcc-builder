@@ -2,7 +2,7 @@ binutils-2*
 gcc-5*
 gcc-6*
 gcc-7*
-dist
+dist*
 packages
 tarballs
 build*.log*

@@ -14,6 +14,11 @@ cd $TOP_DIR
 ./unpack-gcc.sh
 ./configure-gcc.sh
 ./make-gcc.sh
-./test-as.sh
-./test-g++.sh
-./test-gcc.sh
+
+if [ -n "$DO_TEST" ]
+then
+    ./test-as.sh
+    ./test-g++.sh
+    ./test-gcc.sh
+fi
+
