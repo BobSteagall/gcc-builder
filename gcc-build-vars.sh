@@ -110,7 +110,7 @@ then
     then
         export DO_TEST=YES
     else
-        while getopts ":clhn" opt
+        while getopts ":tT" opt
         do
             case $opt in
                 h ) echo "usage: $0 [-t] [-T]"
