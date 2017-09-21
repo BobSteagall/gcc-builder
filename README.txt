@@ -89,7 +89,12 @@ The process is pretty simple:
 
     $ ./build-gcc.sh | tee build.log
 
- d. If the build succeeds, and you are satisfied with the test results, run
+    This command will build GCC and run the various unit tests that come
+    with the distribution.  To build without running the tests, you can use:
+
+    $ ./build-gcc.sh -T | tee build.log
+
+d. If the build succeeds, and you are satisfied with the test results, run
     the stage-gcc.sh script to create the installation staging area.
 
     $ ./stage-gcc.sh
@@ -102,11 +107,18 @@ The process is pretty simple:
     the tarball:
 
     $ cd /
-    $ sudo tar -zxvf <build_dir>/gcc-builder/packages/kewb-gcc-*.tgz
+    $ sudo tar -zxvf <build_dir>/gcc-builder/packages/kewb-gcc7X0*.tgz
 
     or, alternatively:
 
-    $ sudo tar -zxvf ./gcc-builder/packages/kewb-gcc-*.tgz -C /
+    $ sudo tar -zxvf ./gcc-builder/packages/kewb-gcc7X0*.tgz -C /
+
+    If you are satisfied that everything is working correctly, then at some
+    point you'll want to set ownership of the un-tarred files to root:
+
+    $ cd /usr/local
+    $ sudo chown -R root:root gcc/7.X.0/
+    $ sudo chown root:root bin/*gcc7X0*
 
  f. If you want to create an RPM for subsequent installations:
 
