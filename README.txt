@@ -107,18 +107,18 @@ d. If the build succeeds, and you are satisfied with the test results, run
     the tarball:
 
     $ cd /
-    $ sudo tar -zxvf <build_dir>/gcc-builder/packages/kewb-gcc7X0*.tgz
+    $ sudo tar -zxvf <build_dir>/gcc-builder/packages/kewb-gcc6X0*.tgz
 
     or, alternatively:
 
-    $ sudo tar -zxvf ./gcc-builder/packages/kewb-gcc7X0*.tgz -C /
+    $ sudo tar -zxvf ./gcc-builder/packages/kewb-gcc6X0*.tgz -C /
 
     If you are satisfied that everything is working correctly, then at some
     point you'll want to set ownership of the un-tarred files to root:
 
     $ cd /usr/local
-    $ sudo chown -R root:root gcc/7.X.0/
-    $ sudo chown root:root bin/*gcc7X0*
+    $ sudo chown -R root:root gcc/6.X.0/
+    $ sudo chown root:root bin/*gcc6X0*
 
  f. If you want to create an RPM for subsequent installations:
 
