@@ -113,11 +113,11 @@ then
         while getopts ":tT" opt
         do
             case $opt in
-                h ) echo "usage: $0 [-t] [-T]"
+                h ) echo "usage: $0 [-h] [-t|-T]"
                     exit 1 ;;
                 t ) export DO_TEST=YES ;;
                 T ) export DO_TEST= ;;
-                * ) echo "usage: $0 [-t] [-T]"
+                * ) echo "usage: $0 [-h] [-t|-T]"
                     exit 1 ;;
             esac
         done
