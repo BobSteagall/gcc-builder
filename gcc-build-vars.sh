@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC 6 that you want
 ##  to download and build.
 ##
-export GCC_VERSION=7.X.0
+export GCC_VERSION=7.2.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
@@ -22,29 +22,29 @@ export GCC_PKG_NAME='KEWB Computing Build'
 ##
 export GCC_CUSTOM_BUILD_STR=kewb
 
-##- Customize these variables to specify where this version of GCC will
-##  be installed.
+##- Customize this variable to specify where this version of GCC will be
+##  installed.
 ##
 export GCC_INSTALL_ROOT=/usr/local
-export GCC_INSTALL_PREFIX=$GCC_INSTALL_ROOT/gcc/$GCC_VERSION
+export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
 export GCC_TIME_STAMP=201708141000
 
 ##- Customize these variables if you want to change the arguments passed
-##  to make that specify the number of threads used to build and test GCC,
-##  respectively.
+##  to make that specify the number of jobs/processes used to build and
+##  test GCC, respectively.
 ##
-export GCC_BUILD_THREADS_ARG='-j8'
-export GCC_TEST_THREADS_ARG='-j4'
+export GCC_BUILD_JOBS_ARG='-j8'
+export GCC_TEST_JOBS_ARG='-j4'
 
 ##- Set this variable to YES if you want to embed the assember and linker
-##  from a newer version of GNU Binutils (specified below) into the GCC
+##  from a custom version of GNU Binutils (specified below) into the GCC
 ##  installation.  If you just want to use the system's assembler and linker,
-##  then undefine this variable.
+##  then undefine this variable or set its value to "NO".
 ##
-export GCC_USE_NEWER_BINUTILS=YES
+export GCC_USE_CUSTOM_BINUTILS=YES
 
 ##------------------------------------------------------------------------------
 ##      Maybe change below this line, if you have a good reason.
@@ -75,7 +75,7 @@ export GMP_TARBALL=gmp-$GMP_VERSION.tar.gz
 export MPC_TARBALL=mpc-$MPC_VERSION.tar.gz
 export MPFR_TARBALL=mpfr-$MPFR_VERSION.tar.gz
 
-if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_NEWER_BINUTILS" == "YES" ]
+if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
     export BU_TARBALL=binutils-$BU_VERSION.tar.gz
     export BU_SRC_DIR=$TOP_DIR/binutils-$BU_VERSION

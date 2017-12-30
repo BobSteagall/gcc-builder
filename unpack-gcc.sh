@@ -59,7 +59,7 @@ then
 
     elif [ "$GCC_PLATFORM" = "Linux" ]
     then
-        if [ "$GCC_USE_NEWER_BINUTILS" == "YES" ]
+        if [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
         then
             echo "Upacking binutils tarball $BU_TARBALL..."
             tar -zxf ./tarballs/$BU_TARBALL
@@ -116,7 +116,7 @@ echo "GCC unpacking completed!"
 
 ##- Apply binutils patches on Linux.
 ##
-if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_NEWER_BINUTILS" == "YES" ]
+if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
     echo -n "Checking for binutils build directory $BU_BLD_DIR... "
     if [ ! -e $BU_BLD_DIR ]
