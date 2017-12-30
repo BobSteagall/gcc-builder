@@ -40,7 +40,7 @@ then
     fi
 fi
 
-if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_NEWER_BINUTILS" == "YES" ]
+if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
     if [ ! -e $BU_TARBALL ]
     then

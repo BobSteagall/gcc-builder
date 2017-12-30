@@ -74,7 +74,7 @@ fi
 
 ##- Run the binutils configure script.
 ##
-if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_NEWER_BINUTILS" == "YES" ]
+if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
     cd $BU_BLD_DIR
     echo -n "Checking for configuration log in $BU_BLD_DIR..."

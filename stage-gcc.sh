@@ -25,7 +25,7 @@ $GCC_MAKE install DESTDIR=$GCC_STAGEDIR
 
 ##- If requested, install custom binutils.
 ##
-if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_NEWER_BINUTILS" == "YES" ]
+if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
     cd $BU_BLD_DIR
     $GCC_MAKE install-gas DESTDIR=$GCC_STAGEDIR

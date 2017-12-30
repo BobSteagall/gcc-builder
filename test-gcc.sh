@@ -16,4 +16,4 @@ source ./gcc-build-vars.sh
 ##- Run the GCC tests
 ##
 cd $GCC_BLD_DIR/gcc
-$GCC_MAKE $GCC_TEST_THREADS_ARG check-gcc
+$GCC_MAKE $GCC_TEST_JOBS_ARG check-gcc

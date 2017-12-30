@@ -16,11 +16,11 @@ source ./gcc-build-vars.sh
 ##- Make gcc itself.
 ##
 cd $GCC_BLD_DIR
-$GCC_MAKE $GCC_BUILD_THREADS_ARG
+$GCC_MAKE $GCC_BUILD_JOBS_ARG
 
 ##- Make binutils on Linux.
 ##
-if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_NEWER_BINUTILS" == "YES" ]
+if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
     cd $BU_BLD_DIR
     $GCC_MAKE

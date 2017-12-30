@@ -18,5 +18,5 @@ then
     ##- Run the GCC tests
     ##
     cd $BU_BLD_DIR
-    $GCC_MAKE $GCC_TEST_THREADS_ARG check-gas
+    $GCC_MAKE $GCC_TEST_JOBS_ARG check-gas
 fi
