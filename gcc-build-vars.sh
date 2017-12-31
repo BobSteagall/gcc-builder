@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC 6 that you want
 ##  to download and build.
 ##
-export GCC_VERSION=7.2.0
+export GCC_VERSION=7.X.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
@@ -25,7 +25,6 @@ export GCC_CUSTOM_BUILD_STR=kewb
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
 ##
-export GCC_INSTALL_ROOT=/usr/local
 export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
 
 ##- Customize this variable to specify the installation's time stamp.
