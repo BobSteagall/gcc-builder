@@ -44,7 +44,7 @@ export GCC_TEST_THREADS_ARG='-j4'
 ##  installation.  If you just want to use the system's assembler and linker,
 ##  then undefine this variable.
 ##
-export GCC_USE_NEWER_BINUTILS=YES
+export GCC_USE_NEWER_BINUTILS=NO
 
 ##------------------------------------------------------------------------------
 ##      Maybe change below this line, if you have a good reason.
