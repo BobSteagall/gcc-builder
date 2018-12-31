@@ -43,7 +43,7 @@ export GCC_TEST_JOBS_ARG='-j4'
 ##  installation.  If you just want to use the system's assembler and linker,
 ##  then undefine this variable or set its value to "NO".
 ##
-export GCC_USE_CUSTOM_BINUTILS=YES
+export GCC_USE_CUSTOM_BINUTILS=NO
 
 ##------------------------------------------------------------------------------
 ##      Maybe change below this line, if you have a good reason.
