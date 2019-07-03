@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC 6 that you want
 ##  to download and build.
 ##
-export GCC_VERSION=8.X.0
+export GCC_VERSION=9.X.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
@@ -29,13 +29,13 @@ export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=201805141000
+export GCC_TIME_STAMP=201907031000
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of jobs/processes used to build and
 ##  test GCC, respectively.
 ##
-export GCC_BUILD_JOBS_ARG='-j4'
+export GCC_BUILD_JOBS_ARG='-j8'
 export GCC_TEST_JOBS_ARG='-j4'
 
 ##- Set this variable to YES if you want to embed the assember and linker
