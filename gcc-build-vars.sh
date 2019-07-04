@@ -58,10 +58,10 @@ export GCC_EXE_SUFFIX=
 ##- These variables define the versions of binutils, GMP, MPC, and MPFR
 ##  used to build GCC.
 ##
-export BU_VERSION=2.30
-export GMP_VERSION=5.1.3
-export MPC_VERSION=1.0.3
-export MPFR_VERSION=3.1.4
+export BU_VERSION=2.32
+export GMP_VERSION=6.1.2
+export MPC_VERSION=1.1.0
+export MPFR_VERSION=4.0.2
 
 ##------------------------------------------------------------------------------
 ##      Do not change below this line!
@@ -69,14 +69,14 @@ export MPFR_VERSION=3.1.4
 ##
 export GCC_PLATFORM=`uname`
 
-export GCC_TARBALL=gcc-$GCC_VERSION.tar.gz
-export GMP_TARBALL=gmp-$GMP_VERSION.tar.gz
+export GCC_TARBALL=gcc-$GCC_VERSION.tar.xz
+export GMP_TARBALL=gmp-$GMP_VERSION.tar.xz
 export MPC_TARBALL=mpc-$MPC_VERSION.tar.gz
-export MPFR_TARBALL=mpfr-$MPFR_VERSION.tar.gz
+export MPFR_TARBALL=mpfr-$MPFR_VERSION.tar.xz
 
 if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
-    export BU_TARBALL=binutils-$BU_VERSION.tar.gz
+    export BU_TARBALL=binutils-$BU_VERSION.tar.xz
     export BU_SRC_DIR=$TOP_DIR/binutils-$BU_VERSION
     export BU_BLD_DIR=$TOP_DIR/binutils-$BU_VERSION-build
 fi
