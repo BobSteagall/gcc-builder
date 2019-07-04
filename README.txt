@@ -72,12 +72,12 @@ build process.  Each operation is a distinct step in that process.
 
 The process is pretty simple:
 
- a. Clone the git repo and checkout the gcc8 branch.
+ a. Clone the git repo and checkout the gcc9 branch.
 
     $ cd <build_dir>
-    $ git clone git@github.com/BobSteagall/gcc-builder.git
+    $ git clone https://github.com/BobSteagall/gcc-builder.git
     $ cd <build_dir>/gcc-builder
-    $ git checkout gcc8
+    $ git checkout gcc9
 
  b. Customize the variables exported by gcc-build-vars.sh.  In particular,
     you will need to customize the first variable at the top of that file,
@@ -132,17 +132,23 @@ d. If the build succeeds, and you are satisfied with the test results, run
 IMPORTANT WARNING:
 
 If you want to rebuild GCC 9.X.0 after having built and installed it according
-to these directions, AND you plan to install the rebuilt version in the same
-location as its predecessor, then it is imperative that you first perform one
-of the following two actions:
+to these directions, AND you built with a custom binutils, AND you plan to
+install the rebuilt version in the same location as its predecessor, then it
+is imperative that you first perform one of the following three actions:
 
-  a. Rename the installation directory, for example:
+  a. Delete the installation directory, for example:
+
+    $ rm -rf /usr/local/gcc/9.X.0
+
+  --OR--
+
+  b. Rename the installation directory, for example:
 
     $ mv /usr/local/gcc/9.X.0 /usr/local/gcc/9.X-old
 
   --OR--
 
-  b. Rename the custom 'as' and 'ld' exectuables, for example:
+  c. Rename the custom 'as' and 'ld' exectuables, for example:
 
     $ cd /usr/local/gcc/9.X.0/libexec/gcc/x86_64-kewb-linux-gnu/9.X.0
     $ mv as as-old
@@ -153,9 +159,9 @@ Otherwise, the configure portion of the build process will find the custom
 the 'crtbeginS.o' startup file in a way that may be incompatible with your
 system's default linker.
 
-It is important that the compilation of GCC takes place using the system's
-default binutils, and not the custom 'as' and 'ld' that are installed in the
-GCC 9.X.0 directory structure.
+It is important that the compilation of GCC itself takes place using your
+system's default binutils, and not the custom 'as' and 'ld' that are
+installed in the GCC 9.X.0 directory structure.
 
 
 ---------------------------------------------
