@@ -29,7 +29,7 @@ export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=201907031000
+export GCC_TIME_STAMP=201911241000
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of jobs/processes used to build and
@@ -61,7 +61,7 @@ export GCC_EXE_SUFFIX=
 export BU_VERSION=2.32
 export GMP_VERSION=6.1.2
 export MPC_VERSION=1.1.0
-export MPFR_VERSION=4.0.2
+export MPFR_VERSION=3.1.6
 
 ##------------------------------------------------------------------------------
 ##      Do not change below this line!
