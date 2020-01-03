@@ -8,7 +8,7 @@ platform_os=`uname`
 if [ "$platform_os" = "Linux" ]; then
 
     platform_arch=`uname -p`
-    platform_dist=`lsb_release -si`
+    platform_dist=`lsb_release -si | cut -d ' ' -f 1`
     platform_vnum=`lsb_release -sr | cut -d '.' -f 1`
 
     if [ -f /etc/redhat-release ] || [ -f /etc/centos-release ] ; then
