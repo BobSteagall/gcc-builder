@@ -12,6 +12,7 @@ cd $TOP_DIR
 
 ##- Get the GCC-related variables for this build.
 ##
+export NO_PARSE_OPTS=true
 source ./gcc-build-vars.sh
 
 GCC_TAG=
@@ -110,19 +111,21 @@ OUTPUT_DIR=$WORK_DIR
 ##
 function rpmcmd ()
 {
-    rpmbuild -bb $RPM_QUIET                             \
-    --define "build_root_dir $BO_ROOT_DIR"              \
-    --define "gcc_install_dir $GCC_INSTALL_PREFIX"      \
-    --define "gcc_install_reldir $GCC_INSTALL_RELDIR"   \
-    --define "gcc_tag $GCC_TAG"                         \
-    --define "gcc_version $GCC_VERSION"                 \
-    --define "gcc_rpm_release $RPM_RELEASE"             \
-    --define "product_arch $PLATFORM_ARCH"              \
-    --define "product_os $PLATFORM_OS"                  \
-    --define "_topdir $WORK_DIR"                        \
-    --define "_tmppath $WORK_DIR/TMP"                   \
-    --define "_rpmdir $OUTPUT_DIR"                      \
-    --define "_build_name_fmt %%{NAME}-%%{RELEASE}.%%{ARCH}.rpm" \
+    rpmbuild -bb $RPM_QUIET                                             \
+    --define "build_root_dir $BO_ROOT_DIR"                              \
+    --define "gcc_install_dir $GCC_INSTALL_PREFIX"                      \
+    --define "gcc_install_reldir $GCC_INSTALL_RELDIR"                   \
+    --define "gcc_install_scripts_dir $GCC_INSTALL_SCRIPTS_PREFIX"      \
+    --define "gcc_install_scripts_reldir $GCC_INSTALL_SCRIPTS_RELDIR"   \
+    --define "gcc_tag $GCC_TAG"                                         \
+    --define "gcc_version $GCC_VERSION"                                 \
+    --define "gcc_rpm_release $RPM_RELEASE"                             \
+    --define "product_arch $PLATFORM_ARCH"                              \
+    --define "product_os $PLATFORM_OS"                                  \
+    --define "_topdir $WORK_DIR"                                        \
+    --define "_tmppath $WORK_DIR/TMP"                                   \
+    --define "_rpmdir $OUTPUT_DIR"                                      \
+    --define "_build_name_fmt %%{NAME}-%%{RELEASE}.%%{ARCH}.rpm"        \
     $SPEC_FILE
 }
 
