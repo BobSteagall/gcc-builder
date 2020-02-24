@@ -27,6 +27,12 @@ export GCC_CUSTOM_BUILD_STR=kewb
 ##
 export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
 
+##- Customize this variable to specify where the scripts that set various
+##  important environment variables for using this version of GCC will be
+##	installed.
+##
+export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
+
 ##- Customize this variable to specify the installation's time stamp.
 ##
 export GCC_TIME_STAMP=201805141000
@@ -87,6 +93,7 @@ export GCC_TAG="${GCC_VERSION//.}"
 export GCC_SRC_DIR=$TOP_DIR/gcc-$GCC_VERSION
 export GCC_BLD_DIR=$TOP_DIR/gcc-$GCC_VERSION-build
 export GCC_INSTALL_RELDIR=`echo $GCC_INSTALL_PREFIX | sed 's:^/::'`
+export GCC_INSTALL_SCRIPTS_RELDIR=`echo $GCC_INSTALL_SCRIPTS_PREFIX | sed 's:^/::'`
 export GCC_MAJOR_VERSION=`echo $GCC_VERSION | cut -d '.' -f 1`
 
 export GCC_STAGEDIR=$TOP_DIR/dist
