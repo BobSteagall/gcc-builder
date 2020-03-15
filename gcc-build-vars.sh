@@ -35,14 +35,14 @@ export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=201911241000
+export GCC_TIME_STAMP=202003151000
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of jobs/processes used to build and
 ##  test GCC, respectively.
 ##
-export GCC_BUILD_JOBS_ARG='-j8'
-export GCC_TEST_JOBS_ARG='-j4'
+export GCC_BUILD_JOBS_ARG='-j16'
+export GCC_TEST_JOBS_ARG='-j8'
 
 ##- Set this variable to YES if you want to embed the assember and linker
 ##  from a custom version of GNU Binutils (specified below) into the GCC
