@@ -24,19 +24,19 @@ then
     if [ ! -e $GMP_TARBALL ]
     then
         echo "Downloading $GMP_TARBALL... "
-        wget http://ftpmirror.gnu.org/gmp/$GMP_TARBALL
+        wget http://ftp.gnu.org/gnu/gmp/$GMP_TARBALL
     fi
 
     if [ ! -e $MPC_TARBALL ]
     then
         echo "Downloading $MPC_TARBALL... "
-        wget http://ftpmirror.gnu.org/mpc/$MPC_TARBALL
+        wget http://ftp.gnu.org/gnu/mpc/$MPC_TARBALL
     fi
 
     if [ ! -e $MPFR_TARBALL ]
     then
         echo "Downloading $MPFR_TARBALL... "
-        wget http://ftpmirror.gnu.org/mpfr/$MPFR_TARBALL
+        wget http://ftp.gnu.org/gnu/mpfr/$MPFR_TARBALL
     fi
 fi
 
@@ -45,12 +45,12 @@ then
     if [ ! -e $BU_TARBALL ]
     then
         echo "Downloading $BU_TARBALL... "
-        wget http://ftpmirror.gnu.org/binutils/$BU_TARBALL
+        wget http://ftp.gnu.org/gnu/binutils/$BU_TARBALL
     fi
 fi
 
 if [ ! -e $GCC_TARBALL ]
 then
     echo "Downloading $GCC_TARBALL... "
-    wget http://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/$GCC_TARBALL
+    wget http://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION/$GCC_TARBALL
 fi

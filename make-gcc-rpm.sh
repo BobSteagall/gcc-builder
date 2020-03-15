@@ -22,7 +22,7 @@ RPM_QUIET="--quiet"
 CP="cp"
 MKDIR="mkdir -p"
 
-function usage () 
+function usage ()
 {
     echo "usage: make-gcc-rpm.sh [-w <work_root_dir>]"
     echo "                       [-v]"
@@ -130,12 +130,12 @@ function rpmcmd ()
 }
 
 echo "Building GCC RPM using:"
-echo "   GCC_VERSION  = $GCC_VERSION"
-echo "   GCC_TAG      = $GCC_TAG"
-echo "   INSTALL_PREFIX  = $GCC_INSTALL_PREFIX"
-echo "   RPM_RELEASE  = $RPM_RELEASE"
-echo "   PRODUCT_ARCH = $PLATFORM_ARCH"
-echo "   PRODUCT_OS   = $PLATFORM_OS"
+echo "   GCC_VERSION    = $GCC_VERSION"
+echo "   GCC_TAG        = $GCC_TAG"
+echo "   INSTALL_PREFIX = $GCC_INSTALL_PREFIX"
+echo "   RPM_RELEASE    = $RPM_RELEASE"
+echo "   PRODUCT_ARCH   = $PLATFORM_ARCH"
+echo "   PRODUCT_OS     = $PLATFORM_OS"
 
 rpmcmd
 
