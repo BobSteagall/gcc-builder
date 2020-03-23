@@ -7,7 +7,7 @@
 ##  It assumes that TOP_DIR has been defined appropriately by the caller,
 ##  and that it is being sourced by the calling script.
 ##
-##- Customize this variable to specify the version of GCC 6 that you want
+##- Customize this variable to specify the version of GCC 8 that you want
 ##  to download and build.
 ##
 export GCC_VERSION=8.X.0
@@ -41,8 +41,8 @@ export GCC_TIME_STAMP=201805141000
 ##  to make that specify the number of jobs/processes used to build and
 ##  test GCC, respectively.
 ##
-export GCC_BUILD_JOBS_ARG='-j4'
-export GCC_TEST_JOBS_ARG='-j4'
+export GCC_BUILD_JOBS_ARG='-j16'
+export GCC_TEST_JOBS_ARG='-j8'
 
 ##- Set this variable to YES if you want to embed the assember and linker
 ##  from a custom version of GNU Binutils (specified below) into the GCC

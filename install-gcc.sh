@@ -1,9 +1,10 @@
 #!/bin/bash
 ##
-##  Script: pack-gcc.sh
+##  Script: install-gcc.sh
 ##
-##  This top-level script makes a compressed tarball (TGZ) from the files
-##  installed into the staging directory.
+##  This top-level script unzips the compressed tarball (TGZ) created
+##  from the files installed into the staging directory and subsequently
+##  zipped into a tarball in the "packages" subdirectory.
 ##
 ##- Make sure we're in the same directory as this script.
 ##
@@ -27,14 +28,15 @@ if [ "$PLATFORM_OS" = "FreeBSD" ] && [ "$PLATFORM_ARCH" = "amd64" ]; then
 fi
 
 PLATFORM_FULL="${PLATFORM_DESC}-${PLATFORM_ARCH}"
+TARBALL=kewb-gcc${GCC_TAG}-${PLATFORM_FULL}.tgz
 
-##- Make the main binary tarball.
+##- Unzip the tarball.
 ##
-mkdir -p ./packages
-DEST_DIR=`readlink -f ./packages`
-TARBALL=$DEST_DIR/kewb-gcc${GCC_TAG}-${PLATFORM_FULL}.tgz
-rm -rf $TARBALL
-
-cd $GCC_STAGEDIR
-tar -zcvf $TARBALL $GCC_INSTALL_RELDIR $GCC_INSTALL_SCRIPTS_RELDIR
-touch -h -t $GCC_TIME_STAMP $TARBALL
+if [ -f ./packages/$TARBALL ]
+then
+    UZCMD="tar --no-overwrite-dir -xvf ./packages/$TARBALL"
+    echo $UZCMD
+    eval $UZCMD
+else
+    echo "error: KEWB GCC tarball not found"
+fi
