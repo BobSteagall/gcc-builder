@@ -14,7 +14,7 @@ cd $TOP_DIR
 ##- Get the GCC-related variables and command-line options for this build.
 ##
 source ./gcc-build-vars.sh
-
+set -x
 ##- Retrieve useful information about the platform.
 ##
 PLATFORM_INFO=(`$TOP_DIR/system-type.sh -f`)
@@ -34,7 +34,7 @@ TARBALL=kewb-gcc${GCC_TAG}-${PLATFORM_FULL}.tgz
 ##
 if [ -f ./packages/$TARBALL ]
 then
-    UZCMD="tar --no-overwrite-dir -xvf ./packages/$TARBALL"
+    UZCMD="tar --no-overwrite-dir -xvf ./packages/$TARBALL -C /"
     echo $UZCMD
     eval $UZCMD
 else
