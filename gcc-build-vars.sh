@@ -7,7 +7,7 @@
 ##  It assumes that TOP_DIR has been defined appropriately by the caller,
 ##  and that it is being sourced by the calling script.
 ##
-##- Customize this variable to specify the version of GCC 6 that you want
+##- Customize this variable to specify the version of GCC 9 that you want
 ##  to download and build.
 ##
 export GCC_VERSION=9.X.0

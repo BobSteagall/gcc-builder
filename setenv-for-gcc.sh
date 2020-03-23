@@ -1,6 +1,7 @@
 #!/bin/bash
 
 TOOL_ROOT=ABCXYZ
+SCRIPT_DIR=DEFUVW
 
 ##- Handle PATH
 ##
@@ -17,9 +18,9 @@ fi
 if [ "$ORIGINAL_PATH" == "<undef>" ]
 then
     BASIC_PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-    export PATH=$TOOL_ROOT/bin:$BASIC_PATH:$HOME/.local/bin:$HOME/bin:.
+    export PATH=$TOOL_ROOT/bin:$SCRIPT_DIR:$BASIC_PATH:$HOME/.local/bin:$HOME/bin:.
 else
-    export PATH=$TOOL_ROOT/bin:$ORIGINAL_PATH
+    export PATH=$TOOL_ROOT/bin:$SCRIPT_DIR:$ORIGINAL_PATH
 fi
 
 ##- Handle LD_LIBRARY_PATH

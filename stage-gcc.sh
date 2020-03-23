@@ -14,9 +14,10 @@ cd $TOP_DIR
 ##
 source ./gcc-build-vars.sh
 
-##- Make the dummy installation directory.
+##- Make the dummy installation directories.
 ##
-mkdir -p $GCC_STAGEDIR/usr/local/bin
+mkdir -p $GCC_STAGEDIR/$GCC_INSTALL_RELDIR
+mkdir -p $GCC_STAGEDIR/$GCC_INSTALL_SCRIPTS_RELDIR
 
 ##- Install GCC itself.
 ##
@@ -45,14 +46,16 @@ cd $TOP_DIR
 sed "s|ABCXYZ|$GCC_INSTALL_PREFIX|" \
     ./setenv-for-gcc.sh  >          \
     ./setenv-for-gcc$GCC_TAG.sh
+sed -i "s|DEFUVW|$GCC_INSTALL_SCRIPTS_PREFIX|" \
+    ./setenv-for-gcc$GCC_TAG.sh
 chmod 755 ./setenv-for-gcc$GCC_TAG.sh
-mv -vf ./setenv-for-gcc$GCC_TAG.sh        $GCC_STAGEDIR/usr/local/bin
+mv -vf ./setenv-for-gcc$GCC_TAG.sh        $GCC_STAGEDIR/$GCC_INSTALL_SCRIPTS_RELDIR
 
 cp -v ./restore-default-paths.sh ./restore-default-paths-gcc$GCC_TAG.sh
 chmod 755 ./restore-default-paths-gcc$GCC_TAG.sh
-mv -vf ./restore-default-paths-gcc$GCC_TAG.sh $GCC_STAGEDIR/usr/local/bin
+mv -vf ./restore-default-paths-gcc$GCC_TAG.sh $GCC_STAGEDIR/$GCC_INSTALL_SCRIPTS_RELDIR
 
-cd $GCC_STAGEDIR/usr/local/bin
+cd $GCC_STAGEDIR/$GCC_INSTALL_SCRIPTS_RELDIR
 
 ln -vf -s $GCC_INSTALL_PREFIX/bin/gcc gcc$GCC_TAG
 ln -vf -s $GCC_INSTALL_PREFIX/bin/g++ g++$GCC_TAG
@@ -68,10 +71,4 @@ ln -vf -s g++ g++-$GCC_MAJOR_VERSION
 ##- Touch all the files to have the desired timestamp.
 ##
 cd $GCC_STAGEDIR
-find $GCC_STAGEDIR/$GCC_INSTALL_RELDIR -exec touch -h -t $GCC_TIME_STAMP {} \+
-
-cd $GCC_STAGEDIR/usr/local/bin
-touch -h -t $GCC_TIME_STAMP gcc$GCC_TAG
-touch -h -t $GCC_TIME_STAMP g++$GCC_TAG
-touch -h -t $GCC_TIME_STAMP setenv-for-gcc$GCC_TAG.sh
-touch -h -t $GCC_TIME_STAMP restore-default-paths-gcc$GCC_TAG.sh
+find . -exec touch -h -t $GCC_TIME_STAMP {} \+
