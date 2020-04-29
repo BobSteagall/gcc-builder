@@ -58,7 +58,7 @@ fi
 
 BO_ROOT_DIR=`readlink -f $GCC_STAGEDIR`
 
-if [ -x $BO_ROOT_DIR/$GCC_INSTALL_RELDIR/bin/gcc ]; then
+if [ -x $BO_ROOT_DIR/$GCC_INSTALL_RELDIR/bin/gcc$GCC_EXE_SUFFIX ]; then
     echo "Found GCC $GCC_VERSION in $BO_ROOT_DIR/$GCC_INSTALL_RELDIR"
     GCC_TAG=`echo $GCC_VERSION | tr -d .`
 else
