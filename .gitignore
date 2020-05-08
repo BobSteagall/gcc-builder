@@ -2,6 +2,7 @@ binutils-2*
 gcc-5*
 gcc-6*
 gcc-7*
+gcc-8*
 dist*
 packages
 tarballs
