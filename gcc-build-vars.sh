@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC 9 that you want
 ##  to download and build.
 ##
-export GCC_VERSION=9.X.0
+export GCC_VERSION=11.1.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
@@ -25,7 +25,7 @@ export GCC_CUSTOM_BUILD_STR=kewb
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
 ##
-export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
+export GCC_INSTALL_PREFIX=/opt/$GCC_VERSION
 
 ##- Customize this variable to specify where the scripts that set various
 ##  important environment variables for using this version of GCC will be
@@ -35,7 +35,7 @@ export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=202003151000
+export GCC_TIME_STAMP=20210511094900
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of jobs/processes used to build and
