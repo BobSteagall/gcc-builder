@@ -20,12 +20,12 @@ export GCC_PKG_NAME='KEWB Computing Build'
 ##- Customize this variable to define the middle substring of the GCC build
 ##  triple.
 ##
-export GCC_CUSTOM_BUILD_STR=kewb
+export GCC_CUSTOM_BUILD_STR=xt
 
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
 ##
-export GCC_INSTALL_PREFIX=/opt/$GCC_VERSION
+export GCC_INSTALL_PREFIX=/opt/gcc_$GCC_VERSION
 
 ##- Customize this variable to specify where the scripts that set various
 ##  important environment variables for using this version of GCC will be
@@ -35,7 +35,7 @@ export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=20210511094900
+export GCC_TIME_STAMP=20210511164900
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of jobs/processes used to build and
@@ -49,7 +49,7 @@ export GCC_TEST_JOBS_ARG='-j8'
 ##  installation.  If you just want to use the system's assembler and linker,
 ##  then undefine this variable or set its value to "NO".
 ##
-export GCC_USE_CUSTOM_BINUTILS=NO
+export GCC_USE_CUSTOM_BINUTILS=YES
 
 ##------------------------------------------------------------------------------
 ##      Maybe change below this line, if you have a good reason.
