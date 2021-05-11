@@ -25,7 +25,7 @@ export GCC_CUSTOM_BUILD_STR=xt
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
 ##
-export GCC_INSTALL_PREFIX=/opt/gcc_$GCC_VERSION
+export GCC_INSTALL_PREFIX=/opt/gcc-$GCC_VERSION
 
 ##- Customize this variable to specify where the scripts that set various
 ##  important environment variables for using this version of GCC will be
@@ -35,7 +35,7 @@ export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=20210511164900
+export GCC_TIME_STAMP=202105111649
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of jobs/processes used to build and
