@@ -70,7 +70,7 @@ elif [ $1 = "--full" ]  ||  [ $1 = "-f" ]; then
          $platform_dist-$platform_vnum \
          $platform_dist $platform_vnum \
          $platform_arch                \
-         $platform_desc-$platform_vnum
+         $platform_desc
 
 elif [ $1 = "--tag" ]  ||  [ $1 = "-t" ]; then
 

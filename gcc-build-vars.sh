@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC 9 that you want
 ##  to download and build.
 ##
-export GCC_VERSION=9.X.0
+export GCC_VERSION=11.1.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
@@ -20,12 +20,12 @@ export GCC_PKG_NAME='KEWB Computing Build'
 ##- Customize this variable to define the middle substring of the GCC build
 ##  triple.
 ##
-export GCC_CUSTOM_BUILD_STR=kewb
+export GCC_CUSTOM_BUILD_STR=xt
 
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
 ##
-export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
+export GCC_INSTALL_PREFIX=/opt/gcc-$GCC_VERSION
 
 ##- Customize this variable to specify where the scripts that set various
 ##  important environment variables for using this version of GCC will be
@@ -35,7 +35,7 @@ export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=202003151000
+export GCC_TIME_STAMP=202105111649
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to make that specify the number of jobs/processes used to build and
@@ -49,7 +49,7 @@ export GCC_TEST_JOBS_ARG='-j8'
 ##  installation.  If you just want to use the system's assembler and linker,
 ##  then undefine this variable or set its value to "NO".
 ##
-export GCC_USE_CUSTOM_BINUTILS=NO
+export GCC_USE_CUSTOM_BINUTILS=YES
 
 ##------------------------------------------------------------------------------
 ##      Maybe change below this line, if you have a good reason.
@@ -64,10 +64,10 @@ export GCC_EXE_SUFFIX=
 ##- These variables define the versions of binutils, GMP, MPC, and MPFR
 ##  used to build GCC.
 ##
-export BU_VERSION=2.32
-export GMP_VERSION=6.1.2
-export MPC_VERSION=1.1.0
-export MPFR_VERSION=3.1.6
+export BU_VERSION=2.36.1
+export GMP_VERSION=6.2.1
+export MPC_VERSION=1.2.1
+export MPFR_VERSION=4.1.0
 
 ##------------------------------------------------------------------------------
 ##      Do not change below this line!

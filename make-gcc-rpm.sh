@@ -114,7 +114,10 @@ function rpmcmd ()
     rpmbuild -bb $RPM_QUIET                                             \
     --define "build_root_dir $BO_ROOT_DIR"                              \
     --define "gcc_install_dir $GCC_INSTALL_PREFIX"                      \
+    --define "gcc_install_prefix $GCC_INSTALL_PREFIX"                      \
     --define "gcc_install_reldir $GCC_INSTALL_RELDIR"                   \
+    --define "gcc_install_scripts_prefix $GCC_INSTALL_SCRIPTS_PREFIX"   \
+    --define "gcc_install_scripts_dir $GCC_INSTALL_SCRIPTS_PREFIX"      \
     --define "gcc_install_scripts_dir $GCC_INSTALL_SCRIPTS_PREFIX"      \
     --define "gcc_install_scripts_reldir $GCC_INSTALL_SCRIPTS_RELDIR"   \
     --define "gcc_tag $GCC_TAG"                                         \
