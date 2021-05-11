@@ -64,10 +64,10 @@ export GCC_EXE_SUFFIX=
 ##- These variables define the versions of binutils, GMP, MPC, and MPFR
 ##  used to build GCC.
 ##
-export BU_VERSION=2.32
-export GMP_VERSION=6.1.2
-export MPC_VERSION=1.1.0
-export MPFR_VERSION=3.1.6
+export BU_VERSION=2.36.1
+export GMP_VERSION=6.2.1
+export MPC_VERSION=1.2.1
+export MPFR_VERSION=4.1.0
 
 ##------------------------------------------------------------------------------
 ##      Do not change below this line!
