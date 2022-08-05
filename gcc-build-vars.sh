@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC that you want
 ##  to download and build.
 ##
-export GCC_VERSION=11.X.0
+export GCC_VERSION=12.X.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
