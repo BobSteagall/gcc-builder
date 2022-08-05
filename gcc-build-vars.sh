@@ -7,10 +7,10 @@
 ##  It assumes that TOP_DIR has been defined appropriately by the caller,
 ##  and that it is being sourced by the calling script.
 ##
-##- Customize this variable to specify the version of GCC 9 that you want
+##- Customize this variable to specify the version of GCC that you want
 ##  to download and build.
 ##
-export GCC_VERSION=9.X.0
+export GCC_VERSION=10.X.0
 
 ##- Customize variable this to name the installation; the custom name is
 ##  displayed when a user invokes gcc/g++ with the -v or --version flags.
@@ -35,10 +35,10 @@ export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=202003151000
+export GCC_TIME_STAMP=202208041000
 
 ##- Customize these variables if you want to change the arguments passed
-##  to make that specify the number of jobs/processes used to build and
+##  to 'make' that specify the number of jobs/processes used to build and
 ##  test GCC, respectively.
 ##
 export GCC_BUILD_JOBS_ARG='-j16'
@@ -49,7 +49,17 @@ export GCC_TEST_JOBS_ARG='-j8'
 ##  installation.  If you just want to use the system's assembler and linker,
 ##  then undefine this variable or set its value to "NO".
 ##
-export GCC_USE_CUSTOM_BINUTILS=NO
+export GCC_USE_CUSTOM_BINUTILS='YES'
+
+##- Set this variable to YES if you want to perform a profiled booststrap
+##  installation.  This option performs profiled builds and then link-time 
+##  optimiztion during the build process, which can improve the run-time
+##  performance of the compiler itself.  If you don't care, or wish to just
+##  do a regular build, then undefine this variable or set its value to "NO".
+##  If you choose "YES", be aware that this option can substantially increase 
+##  the compiler's build time, perhaps doubling it or more.
+##
+export GCC_USE_PROFILED_BOOTSTRAP='NO'
 
 ##------------------------------------------------------------------------------
 ##      Maybe change below this line, if you have a good reason.
@@ -64,7 +74,7 @@ export GCC_EXE_SUFFIX=
 ##- These variables define the versions of binutils, GMP, MPC, and MPFR
 ##  used to build GCC.
 ##
-export BU_VERSION=2.32
+export BU_VERSION=2.37
 export GMP_VERSION=6.1.2
 export MPC_VERSION=1.1.0
 export MPFR_VERSION=3.1.6
@@ -108,6 +118,12 @@ then
 else
     echo "Unknown build platform!"
     exit 1
+fi
+
+if [ "$GCC_USE_PROFILED_BOOTSTRAP" == "YES" ]
+then
+    export GCC_PBS_CONFIG_OPTION="--with-build-config=bootstrap-lto"
+    export GCC_PBS_TARGET="profiledbootstrap"
 fi
 
 if [ -z "$NO_PARSE_OPTS" ]
