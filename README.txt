@@ -72,7 +72,7 @@ build process.  Each operation is a distinct step in that process.
 
 The process is pretty simple:
 
- a. Clone the git repo and checkout the gcc9 branch.
+ a. Clone the git repo and checkout the gcc10 branch.
 
     $ cd <build_dir>
     $ git clone https://github.com/BobSteagall/gcc-builder.git
