@@ -32,7 +32,7 @@ then
     echo ""
     echo "Making new source directory..."
     echo "Upacking GCC tarball $GCC_TARBALL..."
-    tar -zxf ./tarballs/$GCC_TARBALL
+    tar xf ./tarballs/$GCC_TARBALL
 
     if [ "$GCC_PLATFORM" == "FreeBSD" ]
     then
@@ -62,19 +62,19 @@ then
         if [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
         then
             echo "Upacking binutils tarball $BU_TARBALL..."
-            tar -zxf ./tarballs/$BU_TARBALL
+            tar xf ./tarballs/$BU_TARBALL
         fi
 
         echo "Upacking GMP tarball $GMP_TARBALL..."
-        tar -zxf ./tarballs/$GMP_TARBALL
+        tar xf ./tarballs/$GMP_TARBALL
         mv -v gmp-$GMP_VERSION $GCC_SRC_DIR/gmp
 
         echo "Upacking MPC tarball $MPC_TARBALL..."
-        tar -zxf ./tarballs/$MPC_TARBALL
+        tar xf ./tarballs/$MPC_TARBALL
         mv -v mpc-$MPC_VERSION $GCC_SRC_DIR/mpc
 
         echo "Upacking MPFR tarball $MPFR_TARBALL..."
-        tar -zxf ./tarballs/$MPFR_TARBALL
+        tar xf ./tarballs/$MPFR_TARBALL
         mv -v mpfr-$MPFR_VERSION $GCC_SRC_DIR/mpfr
     fi
 else
