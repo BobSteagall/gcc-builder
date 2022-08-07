@@ -14,6 +14,7 @@ cd $TOP_DIR
 ##
 source ./gcc-build-vars.sh
 
+rm -rf ./custom_fixes_done
 rm -rf ./dist
 rm -rf ./packages
 rm -rf $BU_SRC_DIR
