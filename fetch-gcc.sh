@@ -19,38 +19,34 @@ cd ./tarballs
 
 echo "Checking for required tarballs... "
 
+fetch_file() {
+    local REMOTE_URL=$1
+    local TARBALL=$2
+
+    if [ ! -e $TARBALL ]
+    then
+        echo "Downloading $TARBALL... "
+        wget -t 3 $REMOTE_URL/$TARBALL
+
+        if [ $? -ne 0 ]; then
+            echo "Error retrieving $TARBALL... verify the URL and file name...  exiting"
+            exit -1
+        fi
+    else
+        echo "Already have $TARBALL"
+    fi
+}
+
 if [ "$GCC_PLATFORM" == "Linux" ]
 then
-    if [ ! -e $GMP_TARBALL ]
-    then
-        echo "Downloading $GMP_TARBALL... "
-        wget http://ftpmirror.gnu.org/gmp/$GMP_TARBALL
-    fi
-
-    if [ ! -e $MPC_TARBALL ]
-    then
-        echo "Downloading $MPC_TARBALL... "
-        wget http://ftpmirror.gnu.org/mpc/$MPC_TARBALL
-    fi
-
-    if [ ! -e $MPFR_TARBALL ]
-    then
-        echo "Downloading $MPFR_TARBALL... "
-        wget http://ftpmirror.gnu.org/mpfr/$MPFR_TARBALL
-    fi
+    fetch_file  http://ftp.gnu.org/gnu/gmp   $GMP_TARBALL
+    fetch_file  http://ftp.gnu.org/gnu/mpc   $MPC_TARBALL
+    fetch_file  http://ftp.gnu.org/gnu/mpfr  $MPFR_TARBALL
 fi
 
 if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
-    if [ ! -e $BU_TARBALL ]
-    then
-        echo "Downloading $BU_TARBALL... "
-        wget http://ftpmirror.gnu.org/binutils/$BU_TARBALL
-    fi
+    fetch_file  http://ftp.gnu.org/gnu/binutils  $BU_TARBALL
 fi
 
-if [ ! -e $GCC_TARBALL ]
-then
-    echo "Downloading $GCC_TARBALL... "
-    wget http://ftpmirror.gnu.org/gcc/gcc-$GCC_VERSION/$GCC_TARBALL
-fi
+fetch_file  http://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION  $GCC_TARBALL
