@@ -7,38 +7,28 @@
 ##  It assumes that TOP_DIR has been defined appropriately by the caller,
 ##  and that it is being sourced by the calling script.
 ##
-##- Customize this variable to specify the version of GCC 8 that you want
-##  to download and build.
+##- Customize this variable to specify the version of GCC that you want
+##  to download and build (replace the 'X' with the minor version number).
 ##
 export GCC_VERSION=8.X.0
-
-##- Customize variable this to name the installation; the custom name is
-##  displayed when a user invokes gcc/g++ with the -v or --version flags.
-##
-export GCC_PKG_NAME='KEWB Computing Build'
-
-##- Customize this variable to define the middle substring of the GCC build
-##  triple.
-##
-export GCC_CUSTOM_BUILD_STR=kewb
 
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
 ##
 export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
 
-##- Customize this variable to specify where the scripts that set various
-##  important environment variables for using this version of GCC will be
-##	installed.
+##- Customize this variable to specify where to install the scripts that
+##  set various important environment variables for using this custom GCC
+##	build in day-to-day work.
 ##
 export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=201805141000
+export GCC_TIME_STAMP=202208041000
 
 ##- Customize these variables if you want to change the arguments passed
-##  to make that specify the number of jobs/processes used to build and
+##  to 'make' that specify the number of jobs/processes used to build and
 ##  test GCC, respectively.
 ##
 export GCC_BUILD_JOBS_ARG='-j16'
@@ -49,12 +39,32 @@ export GCC_TEST_JOBS_ARG='-j8'
 ##  installation.  If you just want to use the system's assembler and linker,
 ##  then undefine this variable or set its value to "NO".
 ##
-export GCC_USE_CUSTOM_BINUTILS=NO
+export GCC_USE_CUSTOM_BINUTILS='NO'
+
+##- Set this variable to YES if you want to perform a profiled booststrap
+##  installation.  This option performs profiled builds and then link-time 
+##  optimiztion during the build process, which can improve the run-time
+##  performance of the compiler itself.  If you don't care, or wish to just
+##  do a regular build, then undefine this variable or set its value to "NO".
+##  If you choose "YES", be aware that this option can substantially increase 
+##  the compiler's build time, perhaps doubling it or more.
+##
+export GCC_USE_PROFILED_BOOTSTRAP='NO'
 
 ##------------------------------------------------------------------------------
 ##      Maybe change below this line, if you have a good reason.
 ##------------------------------------------------------------------------------
 ##
+##- Customize variable this to name the installation; the custom name is
+##  displayed when a user invokes gcc/g++ with the -v or --version flags.
+##
+export GCC_PKG_NAME='KEWB Computing Build'
+
+##- Customize this variable to define the middle substring of the GCC build
+##  triple.
+##
+export GCC_CUSTOM_BUILD_STR=kewb
+
 ##- Customize this variable if you want the gcc/g++ executables to be
 ##  built with a suffix in their names (e.g., gccfoo/g++foo). In general,
 ##  this is best left undefined.
@@ -64,10 +74,10 @@ export GCC_EXE_SUFFIX=
 ##- These variables define the versions of binutils, GMP, MPC, and MPFR
 ##  used to build GCC.
 ##
-export BU_VERSION=2.30
-export GMP_VERSION=5.1.3
-export MPC_VERSION=1.0.3
-export MPFR_VERSION=3.1.4
+export BU_VERSION=2.37
+export GMP_VERSION=6.1.2
+export MPC_VERSION=1.1.0
+export MPFR_VERSION=3.1.6
 
 ##------------------------------------------------------------------------------
 ##      Do not change below this line!
@@ -75,14 +85,14 @@ export MPFR_VERSION=3.1.4
 ##
 export GCC_PLATFORM=`uname`
 
-export GCC_TARBALL=gcc-$GCC_VERSION.tar.gz
-export GMP_TARBALL=gmp-$GMP_VERSION.tar.gz
+export GCC_TARBALL=gcc-$GCC_VERSION.tar.xz
+export GMP_TARBALL=gmp-$GMP_VERSION.tar.xz
 export MPC_TARBALL=mpc-$MPC_VERSION.tar.gz
-export MPFR_TARBALL=mpfr-$MPFR_VERSION.tar.gz
+export MPFR_TARBALL=mpfr-$MPFR_VERSION.tar.xz
 
 if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
-    export BU_TARBALL=binutils-$BU_VERSION.tar.gz
+    export BU_TARBALL=binutils-$BU_VERSION.tar.xz
     export BU_SRC_DIR=$TOP_DIR/binutils-$BU_VERSION
     export BU_BLD_DIR=$TOP_DIR/binutils-$BU_VERSION-build
 fi
@@ -108,6 +118,12 @@ then
 else
     echo "Unknown build platform!"
     exit 1
+fi
+
+if [ "$GCC_USE_PROFILED_BOOTSTRAP" == "YES" ]
+then
+    export GCC_PBS_CONFIG_OPTION="--with-build-config=bootstrap-lto"
+    export GCC_PBS_TARGET="profiledbootstrap"
 fi
 
 if [ -z "$NO_PARSE_OPTS" ]
