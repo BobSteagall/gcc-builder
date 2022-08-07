@@ -8,28 +8,18 @@
 ##  and that it is being sourced by the calling script.
 ##
 ##- Customize this variable to specify the version of GCC that you want
-##  to download and build.
+##  to download and build (replace the 'X' with the minor version number).
 ##
 export GCC_VERSION=11.X.0
-
-##- Customize variable this to name the installation; the custom name is
-##  displayed when a user invokes gcc/g++ with the -v or --version flags.
-##
-export GCC_PKG_NAME='KEWB Computing Build'
-
-##- Customize this variable to define the middle substring of the GCC build
-##  triple.
-##
-export GCC_CUSTOM_BUILD_STR=kewb
 
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
 ##
 export GCC_INSTALL_PREFIX=/usr/local/gcc/$GCC_VERSION
 
-##- Customize this variable to specify where the scripts that set various
-##  important environment variables for using this version of GCC will be
-##	installed.
+##- Customize this variable to specify where to install the scripts that
+##  set various important environment variables for using this custom GCC
+##	build in day-to-day work.
 ##
 export GCC_INSTALL_SCRIPTS_PREFIX=/usr/local/bin
 
@@ -49,7 +39,7 @@ export GCC_TEST_JOBS_ARG='-j8'
 ##  installation.  If you just want to use the system's assembler and linker,
 ##  then undefine this variable or set its value to "NO".
 ##
-export GCC_USE_CUSTOM_BINUTILS='YES'
+export GCC_USE_CUSTOM_BINUTILS='NO'
 
 ##- Set this variable to YES if you want to perform a profiled booststrap
 ##  installation.  This option performs profiled builds and then link-time 
@@ -65,6 +55,16 @@ export GCC_USE_PROFILED_BOOTSTRAP='NO'
 ##      Maybe change below this line, if you have a good reason.
 ##------------------------------------------------------------------------------
 ##
+##- Customize variable this to name the installation; the custom name is
+##  displayed when a user invokes gcc/g++ with the -v or --version flags.
+##
+export GCC_PKG_NAME='KEWB Computing Build'
+
+##- Customize this variable to define the middle substring of the GCC build
+##  triple.
+##
+export GCC_CUSTOM_BUILD_STR=kewb
+
 ##- Customize this variable if you want the gcc/g++ executables to be
 ##  built with a suffix in their names (e.g., gccfoo/g++foo). In general,
 ##  this is best left undefined.

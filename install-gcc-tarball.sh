@@ -14,7 +14,7 @@ cd $TOP_DIR
 ##- Get the GCC-related variables and command-line options for this build.
 ##
 source ./gcc-build-vars.sh
-set -x
+
 ##- Retrieve useful information about the platform.
 ##
 PLATFORM_INFO=(`$TOP_DIR/system-type.sh -f`)
