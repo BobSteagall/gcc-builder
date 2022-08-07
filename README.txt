@@ -6,7 +6,7 @@
 This is the README file for the KEWB GCC 12.X.0 build scripts.  In the following
 text, the version numbers will be referred to as 12.X.0 or 12X0, depending on
 the usage and context.  The 'X' refers to GCC's minor version number; e.g., if
-'X' is '2', then intend to build, install, and use GCC 12.2.0.
+'X' is '2', then you intend to build, install, and use GCC 12.2.0.
 
 In order to run these scripts, the following prerequisites must be installed:
  a. lsb_release on Linux
