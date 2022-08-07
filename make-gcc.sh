@@ -16,7 +16,7 @@ source ./gcc-build-vars.sh
 ##- Make gcc itself.
 ##
 cd $GCC_BLD_DIR
-$GCC_MAKE $GCC_BUILD_JOBS_ARG
+$GCC_MAKE $GCC_BUILD_JOBS_ARG $GCC_PBS_TARGET
 
 ##- Make binutils on Linux.
 ##

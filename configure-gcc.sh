@@ -50,19 +50,32 @@ then
             --with-pkgversion="$GCC_PKG_NAME"   \
             --prefix=$GCC_INSTALL_PREFIX        \
             --program-suffix=$GCC_EXE_SUFFIX    \
-            --enable-tls                        \
+            --enable-bootstrap                  \
+            --enable-__cxa_atexit               \
+            --enable-cet                        \
+            --enable-clocale=gnu                \
+            --enable-gnu-indirect-function      \
+            --enable-gnu-unique-object          \
+            --enable-initfini-array             \
+            --enable-languages=c,c++            \
+            --enable-linker-build-id            \
+            --enable-lto                        \
+            --enable-offload-targets=nvptx-none \
+            --enable-plugin                     \
             --enable-shared                     \
             --enable-threads=posix              \
-            --enable-__cxa_atexit               \
-            --enable-clocale=gnu                \
-            --enable-languages=c,c++            \
-            --enable-lto                        \
-            --enable-bootstrap                  \
-            --disable-nls                       \
-            --disable-multilib                  \
+            --enable-tls                        \
             --disable-install-libiberty         \
+            --disable-libmpx                    \
+            --disable-libunwind-exceptions      \
+            --disable-multilib                  \
+            --disable-nls                       \
             --disable-werror                    \
-            --with-system-zlib
+            $GCC_PBS_CONFIG_OPTION              \
+            --with-linker-hash-style=gnu        \
+            --with-system-zlib                  \
+            --with-tune=generic                 \
+            --without-cuda-driver 
     fi
 
     echo "GCC configuration completed!"
