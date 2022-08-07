@@ -1,15 +1,16 @@
 ================================================================================
- 2019-07-03
+ 2022-08-05
  Bob Steagall
  KEWB Computing
 ================================================================================
 This is the README file for the KEWB GCC 9.X.0 build scripts.  In the following
-text, the version numbers will be referred to as 9.X.0 or 9X0, depending on the
-usage and context.
+text, the version numbers will be referred to as 9.X.0 or 9X0, depending on
+the usage and context.  The 'X' refers to GCC's minor version number; e.g., if
+'X' is '2', then you intend to build, install, and use GCC 9.2.0.
 
 In order to run these scripts, the following prerequisites must be installed:
  a. lsb_release on Linux
- b. the typical GNU build tools
+ b. the typical GNU software development and build tools
 
 --------------------------------------------
 1. SCRIPTS THAT PROVIDE CUSTOM BUILD OPTIONS
@@ -35,6 +36,10 @@ In order to run these scripts, the following prerequisites must be installed:
   * pack-gcc.sh - This script creates a compressed tarball of compiler files
     installed into the staging directory by the stage-gcc.sh script.  The
     resulting TGZ file will be in the ./packages subdirectory.
+
+  * install-gcc-tarball.sh - This script unpacks the TGZ file created by the
+    packing script (pack-gcc.sh) into the directory structure specified in
+    the build variables script (gcc-build-vars.sh).
 
   * make-gcc-rpm.sh - This script creates an RPM of the compiler files
     installed into the staging directory by the stage-gcc.sh script.  The
@@ -70,6 +75,10 @@ build process.  Each operation is a distinct step in that process.
 --------------------------------------------
 4. HOW TO BUILD GCC 9.X.0 WITH THESE SCRIPTS
 
+(NB: In the directions below, remember to replace the 'X' with the minor
+version number!)
+
+
 The process is pretty simple:
 
  a. Clone the git repo and checkout the gcc9 branch.
@@ -81,7 +90,8 @@ The process is pretty simple:
 
  b. Customize the variables exported by gcc-build-vars.sh.  In particular,
     you will need to customize the first variable at the top of that file,
-    GCC_VERSION, to select the version of GCC 9.X.0 to download and build.
+    GCC_VERSION, to select the specific version of GCC 9 to download and
+    build.
 
     $ vi ./gcc-build-vars.sh
 
@@ -89,8 +99,10 @@ The process is pretty simple:
 
     $ ./build-gcc.sh | tee build.log
 
-    This command will build GCC and run the various unit tests that come
-    with the distribution.  To build without running the tests, you can use:
+    This command will build GCC and run the various test suites that come
+    with the distribution.
+
+    To build without running the test suites, you can use:
 
     $ ./build-gcc.sh -T | tee build.log
 
@@ -106,19 +118,19 @@ d. If the build succeeds, and you are satisfied with the test results, run
     The resulting tarball will be in the ./packages subdirectory.  To install
     the tarball:
 
-    $ cd /
-    $ sudo tar -zxvf <build_dir>/gcc-builder/packages/kewb-gcc9X0*.tgz
+    $ sudo ./install-gcc-tarball.sh
 
     or, alternatively:
 
-    $ sudo tar -zxvf ./gcc-builder/packages/kewb-gcc9X0*.tgz -C /
+    $ sudo tar -zxvf ./gcc-builder/kewb-gcc9X0*.tgz -C /
 
     If you are satisfied that everything is working correctly, then at some
-    point you'll want to set ownership of the un-tarred files to root:
+    point you may want to set ownership of the un-tarred files to root
+    (substitute the values of GCC_INSTALL_PREFIX and GCC_INSTALL_SCRIPTS_PREFIX
+    that you defined in gcc-build-vars.sh):
 
-    $ cd /usr/local
-    $ sudo chown -R root:root gcc/9.X.0/
-    $ sudo chown root:root bin/*gcc9X0*
+    $ sudo chown -R root:root $GCC_INSTALL_PREFIX
+    $ sudo chown root:root $GCC_INSTALL_SCRIPTS_PREFIX/*gcc9X0*
 
  f. If you want to create an RPM for subsequent installations:
 
@@ -134,7 +146,7 @@ IMPORTANT WARNING:
 If you want to rebuild GCC 9.X.0 after having built and installed it according
 to these directions, AND you built with a custom binutils, AND you plan to
 install the rebuilt version in the same location as its predecessor, then it
-is imperative that you first perform one of the following three actions:
+is imperative that you first perform exactly one of the following three actions:
 
   a. Delete the installation directory, for example:
 
@@ -156,10 +168,10 @@ is imperative that you first perform one of the following three actions:
 
 Otherwise, the configure portion of the build process will find the custom
 'as' and 'ld' executables in the GCC 9.X.0 directory structure, and build
-the 'crtbeginS.o' startup file in a way that may be incompatible with your
-system's default linker.
+the 'crtbeginS.o' startup file in a way that is likely to be incompatible
+with your system's default linker.
 
-It is important that the compilation of GCC itself takes place using your
+It is _critical_ that the compilation of GCC itself takes place using your
 system's default binutils, and not the custom 'as' and 'ld' that are
 installed in the GCC 9.X.0 directory structure.
 
