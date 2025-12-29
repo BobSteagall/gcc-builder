@@ -1,12 +1,12 @@
 ================================================================================
- 2022-08-05
+ 2025-12-29
  Bob Steagall
  KEWB Computing
 ================================================================================
-This is the README file for the KEWB GCC 12.X.0 build scripts.  In the following
-text, the version numbers will be referred to as 12.X.0 or 12X0, depending on
+This is the README file for the KEWB GCC 15.X.0 build scripts.  In the following
+text, the version numbers will be referred to as 15.X.0 or 15X0, depending on
 the usage and context.  The 'X' refers to GCC's minor version number; e.g., if
-'X' is '2', then you intend to build, install, and use GCC 12.2.0.
+'X' is '2', then you intend to build, install, and use GCC 15.2.0.
 
 In order to run these scripts, the following prerequisites must be installed:
  a. lsb_release on Linux
@@ -73,7 +73,7 @@ build process.  Each operation is a distinct step in that process.
 
 
 --------------------------------------------
-4. HOW TO BUILD GCC 12.X.0 WITH THESE SCRIPTS
+4. HOW TO BUILD GCC 15.X.0 WITH THESE SCRIPTS
 
 (NB: In the directions below, remember to replace the 'X' with the minor
 version number!)
@@ -81,12 +81,12 @@ version number!)
 
 The process is pretty simple:
 
- a. Clone the git repo and checkout the gcc12 branch.
+ a. Clone the git repo and checkout the gcc15 branch.
 
     $ cd <build_dir>
     $ git clone https://github.com/BobSteagall/gcc-builder.git
     $ cd <build_dir>/gcc-builder
-    $ git checkout gcc12
+    $ git checkout gcc15
 
  b. Customize the variables exported by gcc-build-vars.sh.  In particular,
     you will need to customize the first variable at the top of that file,
@@ -122,7 +122,7 @@ d. If the build succeeds, and you are satisfied with the test results, run
 
     or, alternatively:
 
-    $ sudo tar -zxvf ./gcc-builder/kewb-gcc12X0*.tgz -C /
+    $ sudo tar -zxvf ./gcc-builder/kewb-gcc15X0*.tgz -C /
 
     If you are satisfied that everything is working correctly, then at some
     point you may want to set ownership of the un-tarred files to root
@@ -130,7 +130,7 @@ d. If the build succeeds, and you are satisfied with the test results, run
     that you defined in gcc-build-vars.sh):
 
     $ sudo chown -R root:root $GCC_INSTALL_PREFIX
-    $ sudo chown root:root $GCC_INSTALL_SCRIPTS_PREFIX/*gcc12X0*
+    $ sudo chown root:root $GCC_INSTALL_SCRIPTS_PREFIX/*gcc15X0*
 
  f. If you want to create an RPM for subsequent installations:
 
@@ -143,49 +143,49 @@ d. If the build succeeds, and you are satisfied with the test results, run
 
 IMPORTANT WARNING:
 
-If you want to rebuild GCC 12.X.0 after having built and installed it according
+If you want to rebuild GCC 15.X.0 after having built and installed it according
 to these directions, AND you built with a custom binutils, AND you plan to
 install the rebuilt version in the same location as its predecessor, then it
 is imperative that you first perform exactly one of the following three actions:
 
   a. Delete the installation directory, for example:
 
-    $ rm -rf /usr/local/gcc/12.X.0
+    $ rm -rf /usr/local/gcc/15.X.0
 
   --OR--
 
   b. Rename the installation directory, for example:
 
-    $ mv /usr/local/gcc/12.X.0 /usr/local/gcc/12.X-old
+    $ mv /usr/local/gcc/15.X.0 /usr/local/gcc/15.X-old
 
   --OR--
 
   c. Rename the custom 'as' and 'ld' exectuables, for example:
 
-    $ cd /usr/local/gcc/12.X.0/libexec/gcc/x86_64-kewb-linux-gnu/12.X.0
+    $ cd /usr/local/gcc/15.X.0/libexec/gcc/x86_64-kewb-linux-gnu/15.X.0
     $ mv as as-old
     $ mv ld ld-old
 
 Otherwise, the configure portion of the build process will find the custom
-'as' and 'ld' executables in the GCC 12.X.0 directory structure, and build
+'as' and 'ld' executables in the GCC 15.X.0 directory structure, and build
 the 'crtbeginS.o' startup file in a way that is likely to be incompatible
 with your system's default linker.
 
 It is _critical_ that the compilation of GCC itself takes place using your
 system's default binutils, and not the custom 'as' and 'ld' that are
-installed in the GCC 12.X.0 directory structure.
+installed in the GCC 15.X.0 directory structure.
 
 
 ---------------------------------------------
-5. HOW TO USE THE KEWB CUSTOM GCC 12.X.0 BUILD
+5. HOW TO USE THE KEWB CUSTOM GCC 15.X.0 BUILD
 
 Before using the compiler, some paths need to be set.  The simplest way to do
-this is source the "setenv-for-gcc12X0.sh" script that is installed.
+this is source the "setenv-for-gcc15X0.sh" script that is installed.
 
  a. Source the script /usr/local/bin/setenv-for-gcc-12X0.sh, which was installed
     in step 4.e or 4.f above.  For example,
 
-        $ source /usr/local/bin/setenv-for-gcc12X0.sh
+        $ source /usr/local/bin/setenv-for-gcc15X0.sh
 
 -- OR --
 
@@ -194,11 +194,11 @@ this is source the "setenv-for-gcc12X0.sh" script that is installed.
     system default compiler is installed (which is usually in /usr/bin or
     /usr/local/bin).  For example,
 
-        $ export PATH=/usr/local/gcc/12.X.0/bin:$PATH
+        $ export PATH=/usr/local/gcc/15.X.0/bin:$PATH
 
  b. You will also need to modify your LD_LIBRARY_PATH environment variable so
     that the $GCC_INSTALL_PREFIX/lib and $GCC_INSTALL_PREFIX/lib64 directories
     appear first in the path.  For example,
 
-        $ export LD_LIBRARY_PATH=/usr/local/gcc/12.X.0/lib:\
-          /usr/local/gcc/12.X.0/lib64:$LD_LIBRARY_PATH
+        $ export LD_LIBRARY_PATH=/usr/local/gcc/15.X.0/lib:\
+          /usr/local/gcc/15.X.0/lib64:$LD_LIBRARY_PATH

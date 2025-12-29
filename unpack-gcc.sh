@@ -31,8 +31,9 @@ if [ ! -e $GCC_SRC_DIR ]
 then
     echo ""
     echo "Making new source directory..."
+    mkdir -p $GCC_SRC_DIR
     echo "Upacking GCC tarball $GCC_TARBALL..."
-    tar xf ./tarballs/$GCC_TARBALL
+    tar xf ./tarballs/$GCC_TARBALL -C $GCC_SRC_DIR --strip-components=1
 
     if [ "$GCC_PLATFORM" == "FreeBSD" ]
     then
@@ -62,19 +63,23 @@ then
         if [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
         then
             echo "Upacking binutils tarball $BU_TARBALL..."
-            tar xf ./tarballs/$BU_TARBALL
+            mkdir -p $BU_SRC_DIR
+            tar xf ./tarballs/$BU_TARBALL -C $BU_SRC_DIR --strip-components=1
         fi
 
         echo "Upacking GMP tarball $GMP_TARBALL..."
-        tar xf ./tarballs/$GMP_TARBALL
+        mkdir -p $GMP_SRC_DIR
+        tar xf ./tarballs/$GMP_TARBALL -C $GMP_SRC_DIR --strip-components=1
         mv -v gmp-$GMP_VERSION $GCC_SRC_DIR/gmp
 
         echo "Upacking MPC tarball $MPC_TARBALL..."
-        tar xf ./tarballs/$MPC_TARBALL
+        mkdir -p $MPC_SRC_DIR
+        tar xf ./tarballs/$MPC_TARBALL -C $MPC_SRC_DIR --strip-components=1
         mv -v mpc-$MPC_VERSION $GCC_SRC_DIR/mpc
 
         echo "Upacking MPFR tarball $MPFR_TARBALL..."
-        tar xf ./tarballs/$MPFR_TARBALL
+        mkdir -p $MPFR_SRC_DIR
+        tar xf ./tarballs/$MPFR_TARBALL -C $MPFR_SRC_DIR --strip-components=1
         mv -v mpfr-$MPFR_VERSION $GCC_SRC_DIR/mpfr
     fi
 else
