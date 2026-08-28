@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC that you want
 ##  to download and build (replace the 'X' with the minor version number).
 ##
-export GCC_VERSION=15.X.0
+export GCC_VERSION=16.X.0
 
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
@@ -25,7 +25,7 @@ export GCC_INSTALL_SCRIPTS_PREFIX=/opt/tools/common/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=202608271000
+export GCC_TIME_STAMP=202608281000
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to 'make' that specify the number of jobs/processes used to build and
