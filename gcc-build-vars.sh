@@ -76,7 +76,7 @@ export GCC_EXE_SUFFIX=
 ##
 export BU_VERSION=2.46.1
 export GMP_VERSION=6.3.0
-export ISL_VERSION=0.28
+export ISL_VERSION=0.24
 export MPC_VERSION=1.4.1
 export MPFR_VERSION=4.2.2
 
