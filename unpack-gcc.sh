@@ -72,6 +72,11 @@ then
         tar xf ./tarballs/$GMP_TARBALL -C $GMP_SRC_DIR --strip-components=1
         mv -v gmp-$GMP_VERSION $GCC_SRC_DIR/gmp
 
+        echo "Upacking ISL tarball $ISL_TARBALL..."
+        mkdir -p $ISL_SRC_DIR
+        tar xf ./tarballs/$ISL_TARBALL -C $ISL_SRC_DIR --strip-components=1
+        mv -v isl-$ISL_VERSION $GCC_SRC_DIR/isl
+
         echo "Upacking MPC tarball $MPC_TARBALL..."
         mkdir -p $MPC_SRC_DIR
         tar xf ./tarballs/$MPC_TARBALL -C $MPC_SRC_DIR --strip-components=1

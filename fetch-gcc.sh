@@ -39,14 +39,15 @@ fetch_file() {
 
 if [ "$GCC_PLATFORM" == "Linux" ]
 then
-    fetch_file  http://ftp.gnu.org/gnu/gmp   $GMP_TARBALL
-    fetch_file  http://ftp.gnu.org/gnu/mpc   $MPC_TARBALL
-    fetch_file  http://ftp.gnu.org/gnu/mpfr  $MPFR_TARBALL
+    fetch_file  https://libisl.sourceforge.io       $ISL_TARBALL
+    fetch_file  https://ftpmirror.gnu.org/gnu/gmp   $GMP_TARBALL
+    fetch_file  https://ftpmirror.gnu.org/gnu/mpc   $MPC_TARBALL
+    fetch_file  https://ftpmirror.gnu.org/gnu/mpfr  $MPFR_TARBALL
 fi
 
 if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
-    fetch_file  http://ftp.gnu.org/gnu/binutils  $BU_TARBALL
+    fetch_file  https://ftpmirror.gnu.org/gnu/binutils  $BU_TARBALL
 fi
 
-fetch_file  http://ftp.gnu.org/gnu/gcc/gcc-$GCC_VERSION  $GCC_TARBALL
+fetch_file  https://ftpmirror.gnu.org/gnu/gcc/gcc-$GCC_VERSION  $GCC_TARBALL

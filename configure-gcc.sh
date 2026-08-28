@@ -48,11 +48,12 @@ then
     then
         $GCC_SRC_DIR/configure -v               \
             --with-pkgversion="$GCC_PKG_NAME"   \
-            --prefix=$GCC_INSTALL_PREFIX        \
-            --program-suffix=$GCC_EXE_SUFFIX    \
+            --prefix="$GCC_INSTALL_PREFIX"      \
+            --program-suffix="$GCC_EXE_SUFFIX"  \
             --enable-bootstrap                  \
             --enable-__cxa_atexit               \
             --enable-cet                        \
+            --enable-checking=release           \
             --enable-clocale=gnu                \
             --enable-gnu-indirect-function      \
             --enable-gnu-unique-object          \
@@ -60,7 +61,6 @@ then
             --enable-languages=c,c++            \
             --enable-linker-build-id            \
             --enable-lto                        \
-            --enable-offload-targets=nvptx-none \
             --enable-plugin                     \
             --enable-shared                     \
             --enable-threads=posix              \
@@ -71,11 +71,13 @@ then
             --disable-multilib                  \
             --disable-nls                       \
             --disable-werror                    \
-            $GCC_PBS_CONFIG_OPTION              \
             --with-linker-hash-style=gnu        \
             --with-system-zlib                  \
             --with-tune=generic                 \
-            --without-cuda-driver 
+            $GCC_PBS_CONFIG_OPTION
+
+#            --enable-offload-targets=nvptx-none \
+#            --without-cuda-driver               \
     fi
 
     echo "GCC configuration completed!"

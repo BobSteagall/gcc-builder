@@ -10,7 +10,7 @@
 ##- Customize this variable to specify the version of GCC that you want
 ##  to download and build (replace the 'X' with the minor version number).
 ##
-export GCC_VERSION=15.2.0
+export GCC_VERSION=15.X.0
 
 ##- Customize this variable to specify where this version of GCC will be
 ##  installed.
@@ -25,7 +25,7 @@ export GCC_INSTALL_SCRIPTS_PREFIX=/opt/tools/common/bin
 
 ##- Customize this variable to specify the installation's time stamp.
 ##
-export GCC_TIME_STAMP=202512291000
+export GCC_TIME_STAMP=202608271000
 
 ##- Customize these variables if you want to change the arguments passed
 ##  to 'make' that specify the number of jobs/processes used to build and
@@ -74,9 +74,10 @@ export GCC_EXE_SUFFIX=
 ##- These variables define the versions of binutils, GMP, MPC, and MPFR
 ##  used to build GCC.
 ##
-export BU_VERSION=2.45.1
+export BU_VERSION=2.46.1
 export GMP_VERSION=6.3.0
-export MPC_VERSION=1.3.1
+export ISL_VERSION=0.28
+export MPC_VERSION=1.4.1
 export MPFR_VERSION=4.2.2
 
 ##------------------------------------------------------------------------------
@@ -85,7 +86,7 @@ export MPFR_VERSION=4.2.2
 ##
 export GCC_PLATFORM=`uname`
 
-export GCC_TARBALL=gcc-$GCC_VERSION.tar.gz
+export GCC_TARBALL=gcc-$GCC_VERSION.tar.xz
 
 export GCC_TAG="${GCC_VERSION//.}"
 export GCC_SRC_DIR=$TOP_DIR/gcc-$GCC_VERSION
@@ -97,21 +98,24 @@ export GCC_STAGEDIR=$TOP_DIR/dist
 
 if [ "$GCC_PLATFORM" == "Linux" ] && [ "$GCC_USE_CUSTOM_BINUTILS" == "YES" ]
 then
-    export BU_TARBALL=binutils-$BU_VERSION.tar.gz
+    export BU_TARBALL=binutils-$BU_VERSION.tar.xz
     export BU_SRC_DIR=$TOP_DIR/binutils-$BU_VERSION
     export BU_BLD_DIR=$TOP_DIR/binutils-$BU_VERSION-build
 fi
 
-export GMP_TARBALL=gmp-$GMP_VERSION.tar.gz
+export GMP_TARBALL=gmp-$GMP_VERSION.tar.xz
 export GMP_SRC_DIR=$TOP_DIR/gmp-$GMP_VERSION
 
-export MPC_TARBALL=mpc-$MPC_VERSION.tar.gz
+export ISL_TARBALL=isl-$ISL_VERSION.tar.xz
+export ISL_SRC_DIR=$TOP_DIR/isl-$ISL_VERSION
+
+export MPC_TARBALL=mpc-$MPC_VERSION.tar.xz
 export MPC_SRC_DIR=$TOP_DIR/mpc-$MPC_VERSION
 
-export MPFR_TARBALL=mpfr-$MPFR_VERSION.tar.gz
+export MPFR_TARBALL=mpfr-$MPFR_VERSION.tar.xz
 export MPFR_SRC_DIR=$TOP_DIR/mpfr-$MPFR_VERSION
 
-export ALL_TARBALLS="$GCC_TARBALL $GMP_TARBALL $MPC_TARBALL $MPFR_TARBALL $BU_TARBALL"
+export ALL_TARBALLS="$GCC_TARBALL $GMP_TARBALL $ISL_TARBALL $MPC_TARBALL $MPFR_TARBALL $BU_TARBALL"
 
 
 if [ "$GCC_PLATFORM" == "FreeBSD" ]
